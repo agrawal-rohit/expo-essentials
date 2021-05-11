@@ -13,7 +13,7 @@ import Heading from "../../components/Heading";
 import Button from "../../components/Button";
 import SubHeading from "../../components/SubHeading";
 
-import AuthContext from "../../auth/context";
+import AuthContext from "../../contexts/auth";
 import authStorage from "../../auth/storage";
 
 function ProfileHome({ navigation }) {
