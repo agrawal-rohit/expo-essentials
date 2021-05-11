@@ -4,7 +4,7 @@ import { Formik } from "formik";
 import * as Yup from "yup";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import AuthContext from "../auth/context";
+import AuthContext from "../contexts/auth";
 import jwt_decode from "jwt-decode";
 
 // Components

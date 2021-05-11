@@ -12,7 +12,7 @@ import * as Yup from "yup";
 import colors from "../config/colors";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import AuthContext from "../auth/context";
+import AuthContext from "../contexts/auth";
 import jwt_decode from "jwt-decode";
 
 // Components
@@ -53,11 +53,12 @@ export default function LoginScreen({ navigation }) {
     authContext.setUser(user);
     authStorage.storeToken(result.data.auth_token);
 
+    // TODO: Add snackbar for notifications
+
     navigation.reset({
       index: 0,
       routes: [{ name: "Home" }],
     });
-    // navigation.navigate("Home");
   };
 
   return (
