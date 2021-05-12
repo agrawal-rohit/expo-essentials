@@ -6,40 +6,30 @@ import {
   StatusBar,
   Platform,
 } from "react-native";
-
+import { Layout } from "@ui-kitten/components";
 import colors from "../config/colors";
 
-export default function Screen({
-  children,
-  withPadding = true,
-  paddingAmount = 20,
-  paddingBottom = 20,
-}) {
-  if (withPadding) {
-    return (
-      <SafeAreaView style={styles.screenContainer}>
-        <View
-          style={{
-            padding: paddingAmount,
-            flex: 1,
-            paddingBottom: paddingBottom,
-          }}
-        >
+export default function Screen({ children, level = '1', withPadding = true }) {
+  return (
+    <Layout
+      level={level}
+      style={{
+        flex: 1,
+      }}
+    >
+      <SafeAreaView style={styles.safeAreaContainer}>
+        <View style={{ flex: 1, padding: withPadding ? 20 : 0 }}>
           {children}
         </View>
       </SafeAreaView>
-    );
-  } else {
-    return (
-      <SafeAreaView style={styles.screenContainer}>{children}</SafeAreaView>
-    );
-  }
+    </Layout>
+  );
 }
 
 const styles = StyleSheet.create({
-  screenContainer: {
+  safeAreaContainer: {
     flex: 1,
-    backgroundColor: colors.white,
+    padding: 20,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
   },
 });

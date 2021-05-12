@@ -1,21 +1,26 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
+import { StyleSheet } from "react-native";
+import { Text } from "@ui-kitten/components";
 
-import colors from "../config/colors";
-
-export default function HeadingOne({
+export default function Heading({
   children,
-  color = colors.darkColor,
-  fontSize = 28,
+  fontSize = 24,
+  fontWeight = "800",
   style,
+  ...props
 }) {
-  const styles = StyleSheet.create({
-    titleStyles: {
-      fontSize: fontSize,
-      color: color,
-      fontFamily: "Poppins-ExtraBold",
-    },
-  });
-
-  return <Text style={[styles.titleStyles, style]}>{children}</Text>;
+  return (
+    <Text
+      category="h1"
+      style={{
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        fontFamily: "Poppins-Bold",
+        ...style,
+      }}
+      {...props}
+    >
+      {children}
+    </Text>
+  );
 }

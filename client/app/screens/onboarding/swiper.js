@@ -10,32 +10,34 @@ import {
 
 import Onboarding from "react-native-onboarding-swiper";
 import Screen from "../../components/Screen";
+import TextLink from "../../components/TextLink";
 
-import colors from "../../config/colors";
+import { useTheme } from '@ui-kitten/components';
 
 const Next = ({ ...props }) => (
-  <TouchableOpacity style={{ marginHorizontal: 20 }} {...props}>
-    <Text style={{ color: colors.primary, fontSize: 16 }}>Next</Text>
-  </TouchableOpacity>
+  <TextLink style={{ marginHorizontal: 20 }} {...props}>Next</TextLink>
 );
 
 const Done = ({ ...props }) => (
-  <TouchableOpacity style={{ marginHorizontal: 20 }} {...props}>
-    <Text style={{ color: colors.primary, fontSize: 16 }}>Get Started</Text>
-  </TouchableOpacity>
+  <TextLink style={{ marginHorizontal: 20 }} {...props}>Finish</TextLink>
+);
+
+const Skip = ({ ...props }) => (
+  <TextLink style={{ marginHorizontal: 20 }} {...props}>Skip</TextLink>
 );
 
 const Dots = ({ selected }) => {
+  const theme = useTheme();
   return (
     <View
       style={{
         width: 7,
         height: 7,
         marginHorizontal: 2,
-        backgroundColor: selected ? colors.primary : colors.white,
+        backgroundColor: selected ? theme['color-primary-default'] : theme['background-basic-color-1'],
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: colors.primary,
+        borderColor: theme['color-primary-default'],
       }}
     />
   );
@@ -44,6 +46,8 @@ const Dots = ({ selected }) => {
 var { width, height, scale } = Dimensions.get("screen");
 
 export default function OnboardingScreen({ navigation }) {
+  const theme = useTheme();
+
   return (
     <Screen withPadding={false}>
       <Onboarding
@@ -51,6 +55,7 @@ export default function OnboardingScreen({ navigation }) {
         onDone={() => navigation.navigate("Login")}
         DoneButtonComponent={Done}
         NextButtonComponent={Next}
+        SkipButtonComponent={Skip}
         DotComponent={Dots}
         bottomBarHighlight={false}
         containerStyles={styles.containerStyles}
@@ -59,7 +64,7 @@ export default function OnboardingScreen({ navigation }) {
         imageContainerStyles={styles.imageContainer}
         pages={[
           {
-            backgroundColor: colors.white,
+            backgroundColor: theme['background-basic-color-1'],
             image: (
               <Image
                 source={require("../../assets/images/onboarding1.png")}
@@ -70,7 +75,7 @@ export default function OnboardingScreen({ navigation }) {
             subtitle: "Read like a video game",
           },
           {
-            backgroundColor: colors.white,
+            backgroundColor: theme['background-basic-color-1'],
             image: (
               <Image
                 source={require("../../assets/images/onboarding2.png")}
@@ -81,7 +86,7 @@ export default function OnboardingScreen({ navigation }) {
             subtitle: "Keep Learning and achieve your goals",
           },
           {
-            backgroundColor: colors.white,
+            backgroundColor: theme['background-basic-color-1'],
             image: (
               <Image
                 source={require("../../assets/images/onboarding3.png")}
@@ -106,12 +111,14 @@ const styles = StyleSheet.create({
     paddingBottom: 0.04 * height * scale,
   },
   titleStyles: {
-    fontSize: 22,
-    fontFamily: "Poppins-ExtraBold",
+    fontSize: 24,
+    fontWeight: '800',
+    fontFamily: "Poppins-Bold",
   },
   subTitleStyles: {
     fontSize: 16,
-    fontFamily: "Poppins-Medium",
+    fontWeight: '700',
+    fontFamily: "Poppins-Regular",
   },
   image: {
     width: 0.7 * width,

@@ -1,6 +1,6 @@
 import * as SecureStore from "expo-secure-store";
 import jwt_decode from "jwt-decode";
-import authApi from "../api/auth";
+// import authApi from "../api/auth";
 
 const key = "authToken";
 
@@ -22,8 +22,8 @@ const getToken = async () => {
 
 const getUser = async () => {
   const token = await getToken();
-  const result = await authApi.check_user_status();
-  if (result.ok) return jwt_decode(token);
+  // const result = await authApi.check_user_status();
+  // if (result.ok) return jwt_decode(token);
   return null;
 };
 

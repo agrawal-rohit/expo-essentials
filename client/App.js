@@ -5,7 +5,8 @@ import AppLoading from "expo-app-loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import * as eva from "@eva-design/eva";
-import { default as theme } from "./app/config/theme.json"; // <-- Import app theme
+import lightTheme from "./app/config/lightTheme";
+import darkTheme from "./app/config/darkTheme"; 
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import { ThemeContext } from "./app/contexts/theme-context";
 import {
@@ -28,6 +29,7 @@ import AppTabNavigator from "./app/navigation/appTab";
 export default function App() {
   const [haveFontsLoaded] = useFonts({
     "Poppins-Regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
+    "Poppins-SemiBold": require("./app/assets/fonts/Poppins-SemiBold.ttf"),
     "Poppins-Bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
     "Poppins-ExtraBold": require("./app/assets/fonts/Poppins-ExtraBold.ttf"),
     "Poppins-ExtraLight": require("./app/assets/fonts/Poppins-ExtraLight.ttf"),
@@ -37,7 +39,7 @@ export default function App() {
   });
 
   const [user, setUser] = useState();
-  const [theme, setTheme] = useState('light');
+  const [theme, setTheme] = useState('dark');
   const [isReady, setIsReady] = useState(false);
   const [initialRoute, setInitialRoute] = useState("Onboarding");
 
@@ -68,7 +70,7 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
         <AuthContext.Provider value={{ user, setUser }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
-            <ApplicationProvider {...eva} theme={{ ...eva.dark, ...theme }}>
+            <ApplicationProvider {...eva} theme={ theme == 'light' ? {...eva.light, ...lightTheme} : {...eva.dark, ...darkTheme} }>
               <NavigationContainer theme={navigationTheme}>
                 {user ? (
                   <AppTabNavigator />

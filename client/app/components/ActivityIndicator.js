@@ -1,42 +1,17 @@
-import React, { useEffect, useRef } from "react";
-import { View, StyleSheet, Image } from "react-native";
-import LottieView from "lottie-react-native";
-import Paragraph from "./Paragraph";
+import React, { useEffect } from "react";
+import { View, StyleSheet } from "react-native";
+import { Spinner } from "@ui-kitten/components";
 
-function ActivityIndicator({ visible = false, withText = false }) {
-  const animation = useRef();
+function ActivityIndicator({ visible = false, ...props }) {
 
-  useEffect(() => {
-    if (visible) {
-      animation.current.play();
-    }
-  });
-
-  if (!visible) return null;
+  if(!visible) return null
 
   return (
     <View style={styles.overlay}>
-      <LottieView
-        ref={animation}
-        loop
-        style={styles.container}
-        source={require("../assets/animations/loader.json")}
-      />
+      <View style={styles.container}>
+        <Spinner size="large" {...props} />
+      </View>
     </View>
-    // <View style={styles.container}>
-    //   {/* <Image
-    //     resizeMode="contain"
-    //     style={styles.image}
-    //     source={require("../assets/animations/book-stack-loader.gif")}
-    //   /> */}
-    //   <LottieView
-    //     ref={animation}
-    //     loop
-    //     style={styles.container}
-    //     source={require("../assets/animations/loader.json")}
-    //   />
-    //   {withText && <Paragraph style={styles.text}>Loading</Paragraph>}
-    // </View>
   );
 }
 
@@ -53,13 +28,6 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-  },
-  image: {
-    width: 200,
-    height: 200,
-  },
-  text: {
-    marginTop: -30,
   },
 });
 

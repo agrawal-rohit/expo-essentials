@@ -1,27 +1,25 @@
 import React from "react";
-import { StyleSheet, Text } from "react-native";
-
-import colors from "../config/colors";
+import { StyleSheet } from "react-native";
+import { Text } from "@ui-kitten/components";
 
 export default function Paragraph({
   children,
   fontSize = 16,
-  color = colors.black,
-  weight = "regular",
+  fontWeight = "400",
   style,
   ...props
 }) {
-  var styles = StyleSheet.create({
-    paragraphStyle: {
-      fontSize: fontSize,
-      fontFamily: weight == "medium" ? "Poppins-Medium" : "Poppins-Regular",
-      lineHeight: 20,
-      color: color,
-    },
-  });
-
   return (
-    <Text {...props} style={[styles.paragraphStyle, style]}>
+    <Text
+      category="p1"
+      style={{
+        fontSize: fontSize,
+        fontWeight: fontWeight,
+        fontFamily: "Poppins-Regular",
+        ...style,
+      }}
+      {...props}
+    >
       {children}
     </Text>
   );

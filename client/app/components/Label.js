@@ -1,21 +1,20 @@
 import React from "react";
-import { StyleSheet } from "react-native";
 import { Text } from "@ui-kitten/components";
 
-export default function SubHeading({
+export default function Heading({
   children,
-  fontSize = 16,
-  fontWeight = "600",
+  fontSize = 12,
+  fontWeight = "800",
   style,
   ...props
 }) {
   return (
     <Text
-      category="s1"
+      category="label"
       style={{
         fontSize: fontSize,
         fontWeight: fontWeight,
-        fontFamily: "Poppins-SemiBold",
+        fontFamily: "Poppins-Bold",
         ...style,
       }}
       {...props}
