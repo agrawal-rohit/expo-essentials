@@ -22,6 +22,7 @@ import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import TextLink from "../components/TextLink";
+import Label from '../components/Label'
 
 // API
 import authApi from "../api/auth";
@@ -63,7 +64,6 @@ export default function LoginScreen({ navigation }) {
 
   return (
     <>
-      <ActivityIndicator visible={loginApi.loading} />
       <Screen>
         <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
           <Heading style={{ marginBottom: 20, marginTop: 20 }}>Login</Heading>
@@ -86,6 +86,7 @@ export default function LoginScreen({ navigation }) {
             }) => (
               <>
                 <ScrollView>
+                  {/* <Label style={{marginBottom: 10}}>Email</Label> */}
                   <TextInput
                     placeholder="Email"
                     autoCompleteType="email"
@@ -99,6 +100,7 @@ export default function LoginScreen({ navigation }) {
                     onBlur={() => setFieldTouched("email")}
                     errorVisible={touched.email}
                   />
+                  {/* <Label style={{marginBottom: 10}}>Password</Label> */}
                   <TextInput
                     placeholder="Password"
                     autoCompleteType="password"
@@ -106,7 +108,7 @@ export default function LoginScreen({ navigation }) {
                     returnKeyType="next"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    secureTextEntry={true}
+                    secure={true}
                     value={values.password}
                     onChangeText={handleChange("password")}
                     errorMessage={errors.password}
@@ -121,7 +123,7 @@ export default function LoginScreen({ navigation }) {
                   </TextLink>
                 </ScrollView>
 
-                <Button onPress={handleSubmit} style={{ marginTop: 20 }}>
+                <Button loading={loginApi.loading} onPress={handleSubmit} style={{ marginTop: 20 }}>
                   Sign In
                 </Button>
               </>

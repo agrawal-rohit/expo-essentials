@@ -1,79 +1,80 @@
+// 
 import React from "react";
 import {
-  StyleSheet,
-  Text,
-  TextInput,
-  TouchableOpacity,
   View,
+  StyleSheet,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
 } from "react-native";
+
+import { Icon, Input } from "@ui-kitten/components";
 import { MaterialCommunityIcons, MaterialIcons } from "@expo/vector-icons";
-
-import colors from "../config/colors";
-
-import Paragraph from "./Paragraph";
+import { Feather } from '@expo/vector-icons';
+import Caption from "./Caption";
 
 export default function CustomTextInput({
   icon,
   errorMessage,
   errorVisible,
+  size="large",
   withClearButton = false,
   width = "100%",
   value,
+  secure = false,
   onClear,
   style,
   ...otherProps
 }) {
+  const [secureTextEntry, setSecureTextEntry] = React.useState(secure);
+
+  const toggleSecureEntry = () => {
+    setSecureTextEntry(!secureTextEntry);
+  };
+
+  const renderSecureIcon = (props) => (
+    <TouchableWithoutFeedback onPress={toggleSecureEntry}>
+      <Icon {...props} name={secureTextEntry ? "eye-off" : "eye"} />
+    </TouchableWithoutFeedback>
+  );
+
+  const renderErrorCaption = (errorMessage) => {
+    return (
+      <View style={styles.captionContainer}>
+        <Feather name="alert-circle" size={14} color="red" style={{marginRight: 5}} />
+        <Caption status="danger" style={{ marginTop: 10, marginBottom: 10 }}>
+          {errorMessage}
+        </Caption>
+      </View>
+    );
+  };
+
   return (
     <>
-      <View style={[styles.container, { width: width }, style]}>
-        {icon && (
-          <MaterialCommunityIcons
-            name={icon}
-            size={20}
-            color={colors.placeholder}
-            style={styles.inputIcon}
-          />
-        )}
-        <TextInput
-          style={styles.textInput}
-          value={value}
-          placeholderTextColor={colors.placeholder}
-          {...otherProps}
-        />
-        {value.length > 0 && withClearButton && (
-          <TouchableOpacity onPress={onClear}>
-            <MaterialIcons name="clear" size={20} color={colors.black} />
-          </TouchableOpacity>
-        )}
-      </View>
-      {errorMessage && errorVisible && (
-        <Paragraph
-          fontSize={14}
-          color={colors.primary}
-          style={{ marginBottom: 10 }}
-        >
-          {errorMessage}
-        </Paragraph>
+      <Input
+      size={size}
+        value={value}
+        accessoryRight={secure ? renderSecureIcon : null}
+        status={errorMessage && errorVisible ? 'danger': 'basic'}
+        secureTextEntry={secureTextEntry}
+        style={{marginBottom: 10}}
+        {...otherProps}
+      />
+      {value.length > 0 && withClearButton && (
+        <TouchableOpacity onPress={onClear}>
+          <MaterialIcons name="clear" size={20} />
+        </TouchableOpacity>
       )}
+      {errorMessage && errorVisible && renderErrorCaption(errorMessage)}
     </>
   );
 }
 
 var styles = StyleSheet.create({
-  container: {
-    backgroundColor: colors.light,
-    borderRadius: 10,
+  captionContainer: {
+    display: "flex",
     flexDirection: "row",
-    padding: 15,
-    marginVertical: 5,
-  },
-  inputIcon: {
-    marginRight: 5,
-  },
-  textInput: {
-    flex: 1,
-    color: colors.dark,
-    fontSize: 16,
-    fontFamily: "Poppins-Medium",
+    alignItems: "center",
+    marginTop: -10
   },
 });
+
