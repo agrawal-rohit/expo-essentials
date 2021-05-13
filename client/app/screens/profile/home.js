@@ -8,7 +8,7 @@ import {
   Platform,
 } from "react-native";
 
-import Screen from "../../components/Screen";
+import Page from "../../components/Page";
 import Heading from "../../components/Heading";
 import Button from "../../components/Button";
 import SubHeading from "../../components/SubHeading";
@@ -25,10 +25,10 @@ function ProfileHome({ navigation }) {
   };
 
   return (
-    <Screen>
+    <Page>
       <Heading>Profile</Heading>
       <Button onPress={handleLogOut}>Log Out</Button>
-    </Screen>
+    </Page>
   );
 }
 

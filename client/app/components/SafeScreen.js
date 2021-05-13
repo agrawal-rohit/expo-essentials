@@ -9,7 +9,7 @@ import {
 import { Layout } from "@ui-kitten/components";
 import colors from "../config/colors";
 
-export default function Screen({ children, level = '1', withPadding = true }) {
+export default function SafeScreen({ children, level = '1' }) {
   return (
     <Layout
       level={level}
@@ -18,9 +18,7 @@ export default function Screen({ children, level = '1', withPadding = true }) {
       }}
     >
       <SafeAreaView style={styles.safeAreaContainer}>
-        <View style={{ flex: 1, padding: withPadding ? 20 : 0 }}>
           {children}
-        </View>
       </SafeAreaView>
     </Layout>
   );

@@ -40,8 +40,8 @@ export default function CustomTextInput({
   const renderErrorCaption = (errorMessage) => {
     return (
       <View style={styles.captionContainer}>
-        <Feather name="alert-circle" size={14} color="red" style={{marginRight: 5}} />
-        <Caption status="danger" style={{ marginTop: 10, marginBottom: 10 }}>
+        {/* <Feather name="alert-circle" size={14} color="red" style={{marginRight: 5}} /> */}
+        <Caption status="danger" style={{ marginTop: 8, marginBottom: 10 }}>
           {errorMessage}
         </Caption>
       </View>
@@ -56,6 +56,7 @@ export default function CustomTextInput({
         accessoryRight={secure ? renderSecureIcon : null}
         status={errorMessage && errorVisible ? 'danger': 'basic'}
         secureTextEntry={secureTextEntry}
+        textStyle={styles.textStyle}
         style={{marginBottom: 10}}
         {...otherProps}
       />
@@ -76,5 +77,9 @@ var styles = StyleSheet.create({
     alignItems: "center",
     marginTop: -10
   },
+  textStyle: {
+    fontSize: 17,
+    fontFamily: 'Jost-Regular'
+  }
 });
 

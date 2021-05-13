@@ -15,14 +15,17 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import AuthContext from "../contexts/auth";
 import jwt_decode from "jwt-decode";
 
+import Toast from "react-native-root-toast";
+import { useTheme } from "@ui-kitten/components";
+
 // Components
-import Screen from "../components/Screen";
+import Page from "../components/Page";
 import Heading from "../components/Heading";
 import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import TextLink from "../components/TextLink";
-import Label from '../components/Label'
+import Label from "../components/Label";
 
 // API
 import authApi from "../api/auth";
@@ -36,35 +39,44 @@ const validationSchema = Yup.object({
 });
 
 export default function LoginScreen({ navigation }) {
-  const [loginError, setLoginError] = useState(null);
   const loginApi = useApi(authApi.login);
+
   const authContext = useContext(AuthContext);
+  const theme = useTheme();
 
   const loginHandler = async ({ email, password }) => {
     const result = await loginApi.request(email, password);
 
-    if (loginApi.error) {
-      setLoginError(loginApi.errorMessage);
-      Alert.alert("Authentication Error", loginError);
+    if (!result.ok) {
+      Toast.show(result.data, {
+        duration: Toast.durations.SHORT,
+        backgroundColor: theme["color-danger-500"],
+      });
+
       return;
     }
 
-    AsyncStorage.setItem("hasOnboarded", "true");
-    var { user } = jwt_decode(result.data.auth_token);
-    authContext.setUser(user);
-    authStorage.storeToken(result.data.auth_token);
-
-    // TODO: Add snackbar for notifications
-
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "Home" }],
+    Toast.show(result.data.message, {
+      duration: Toast.durations.SHORT,
+      backgroundColor: theme["color-success-600"],
     });
+
+    setTimeout(() => {
+      AsyncStorage.setItem("hasOnboarded", "true");
+      var { user } = jwt_decode(result.headers["bearer-token"]);
+      authContext.setUser(user);
+      authStorage.storeToken(result.headers["bearer-token"]);
+
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      });
+    }, 1000);
   };
 
   return (
     <>
-      <Screen>
+      <Page>
         <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
           <Heading style={{ marginBottom: 20, marginTop: 20 }}>Login</Heading>
 
@@ -123,7 +135,11 @@ export default function LoginScreen({ navigation }) {
                   </TextLink>
                 </ScrollView>
 
-                <Button loading={loginApi.loading} onPress={handleSubmit} style={{ marginTop: 20 }}>
+                <Button
+                  loading={loginApi.loading}
+                  onPress={handleSubmit}
+                  style={{ marginTop: 20 }}
+                >
                   Sign In
                 </Button>
               </>
@@ -139,7 +155,7 @@ export default function LoginScreen({ navigation }) {
             </TextLink>
           </View>
         </KeyboardAwareScrollView>
-      </Screen>
+      </Page>
     </>
   );
 }
