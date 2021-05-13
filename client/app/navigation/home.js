@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
-import ShelfHome from "../screens/main/home";
+import Home from "../screens/main/home";
 
 const Stack = createStackNavigator();
 
@@ -11,7 +11,7 @@ export default function ShelfNavigator() {
       <Stack.Screen
         name="Home"
         options={{ title: "Home" }}
-        component={ShelfHome}
+        component={Home}
       />
     </Stack.Navigator>
   );

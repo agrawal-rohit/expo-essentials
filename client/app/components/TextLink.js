@@ -5,7 +5,7 @@ import Paragraph from "./Paragraph";
 function TextLink({ onPress, style, children }) {
   return (
     <TouchableOpacity onPress={onPress} style={style}>
-      <Paragraph status='primary'>{children}</Paragraph>
+      <Paragraph status='primary' fontFamily="Jost-Medium">{children}</Paragraph>
     </TouchableOpacity>
   );
 }

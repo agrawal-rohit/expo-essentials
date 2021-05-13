@@ -8,15 +8,16 @@ import AuthContext from "../contexts/auth";
 import jwt_decode from "jwt-decode";
 
 // Components
-import Screen from "../components/Screen";
+import Page from "../components/Page";
 import Heading from "../components/Heading";
 import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import TextLink from "../components/TextLink";
-import ActivityIndicator from "../components/ActivityIndicator";
 
-import colors from "../config/colors";
+import Toast from "react-native-root-toast";
+import { useTheme } from '@ui-kitten/components';
+
 import authApi from "../api/auth";
 import useApi from "../hooks/useApi";
 import authStorage from "../auth/storage";
@@ -32,9 +33,10 @@ const validationSchema = Yup.object({
 });
 
 export default function RegisterScreen({ route, navigation }) {
-  const [registerError, setRegisterError] = useState(null);
   const registerApi = useApi(authApi.register);
+
   const authContext = useContext(AuthContext);
+  const theme = useTheme();
 
   const registerHandler = async ({
     first_name,
@@ -65,28 +67,36 @@ export default function RegisterScreen({ route, navigation }) {
       readerGenres
     );
 
-    if (registerApi.error) {
-      setRegisterError(registerApi.errorMessage);
-      Alert.alert("Authentication Error", registerError);
+    if (!result.ok) {
+      Toast.show(result.data, {
+        duration: Toast.durations.SHORT,
+        backgroundColor: theme["color-danger-500"],
+      });
+
       return;
     }
 
-    AsyncStorage.setItem("hasOnboarded", "true");
-    var { user } = jwt_decode(result.data.auth_token);
-    authContext.setUser(user);
-    authStorage.storeToken(result.data.auth_token);
-
-    // navigation.navigate("Home");
-    navigation.reset({
-      index: 0,
-      routes: [{ name: "Home" }],
+    Toast.show(result.data.message, {
+      duration: Toast.durations.SHORT,
+      backgroundColor: theme['color-success-600'],
     });
+
+    setTimeout(() => {
+      AsyncStorage.setItem("hasOnboarded", "true");
+      var { user } = jwt_decode(result.headers["bearer-token"]);
+      authContext.setUser(user);
+      authStorage.storeToken(result.headers["bearer-token"]);
+
+      navigation.reset({
+        index: 0,
+        routes: [{ name: "Home" }],
+      });
+    }, 1000);
   };
 
   return (
     <>
-      <ActivityIndicator visible={registerApi.loading} />
-      <Screen>
+      <Page>
         <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
           <View style={{ flexDirection: "row" }}>
             <Heading
@@ -201,7 +211,7 @@ export default function RegisterScreen({ route, navigation }) {
                   />
                 </ScrollView>
 
-                <Button onPress={handleSubmit} style={{ marginTop: 20 }}>
+                <Button loading={registerApi.loading} onPress={handleSubmit} style={{ marginTop: 20 }}>
                   Sign up
                 </Button>
               </>
@@ -217,7 +227,7 @@ export default function RegisterScreen({ route, navigation }) {
             </TextLink>
           </View>
         </KeyboardAwareScrollView>
-      </Screen>
+      </Page>
     </>
   );
 }

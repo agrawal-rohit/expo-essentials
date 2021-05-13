@@ -8,17 +8,15 @@ import {
   Platform,
 } from "react-native";
 
-import Screen from "../../components/Screen";
+import Page from "../../components/Page";
 import Heading from "../../components/Heading";
 import Button from "../../components/Button";
 
 function DiscoverHome({ navigation }) {
   return (
-    <Screen>
-      <Button onPress={() => navigation.push("SearchScreen")}>
-        Go to Search
-      </Button>
-    </Screen>
+    <Page>
+      <Heading>Browse</Heading>
+    </Page>
   );
 }
 

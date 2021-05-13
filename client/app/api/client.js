@@ -1,8 +1,10 @@
 import { create } from "apisauce";
 import authStorage from "../auth/storage";
+import Constants from "expo-constants";
+const { manifest } = Constants;
 
 const apiClient = create({
-  baseURL: "http://192.168.1.25:8000",
+  baseURL: `http://${manifest.debuggerHost.split(':').shift()}:8000`,
 });
 
 apiClient.addAsyncRequestTransform(async (request) => {

@@ -14,7 +14,7 @@ export default function Heading({
       style={{
         fontSize: fontSize,
         fontWeight: fontWeight,
-        fontFamily: "Poppins-Bold",
+        fontFamily: "Jost-Bold",
         ...style,
       }}
       {...props}

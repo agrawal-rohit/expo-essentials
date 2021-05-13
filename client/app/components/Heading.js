@@ -4,8 +4,7 @@ import { Text } from "@ui-kitten/components";
 
 export default function Heading({
   children,
-  fontSize = 24,
-  fontWeight = "800",
+  fontSize = 28,
   style,
   ...props
 }) {
@@ -14,8 +13,7 @@ export default function Heading({
       category="h1"
       style={{
         fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: "Poppins-Bold",
+        fontFamily: "Jost-Bold",
         ...style,
       }}
       {...props}

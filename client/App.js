@@ -3,10 +3,11 @@ import React, { useEffect, useState } from "react";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { RootSiblingParent } from "react-native-root-siblings";
 
 import * as eva from "@eva-design/eva";
 import lightTheme from "./app/config/lightTheme";
-import darkTheme from "./app/config/darkTheme"; 
+import darkTheme from "./app/config/darkTheme";
 import { EvaIconsPack } from "@ui-kitten/eva-icons";
 import { ThemeContext } from "./app/contexts/theme-context";
 import {
@@ -21,25 +22,24 @@ import AuthContext from "./app/contexts/auth";
 import authStorage from "./app/auth/storage";
 
 // Navigation
-import navigationTheme from "./app/navigation/navigationTheme";
 import OnboardingNavigator from "./app/navigation/onboarding";
 import AuthNavigator from "./app/navigation/auth";
 import AppTabNavigator from "./app/navigation/appTab";
 
 export default function App() {
   const [haveFontsLoaded] = useFonts({
-    "Poppins-Regular": require("./app/assets/fonts/Poppins-Regular.ttf"),
-    "Poppins-SemiBold": require("./app/assets/fonts/Poppins-SemiBold.ttf"),
-    "Poppins-Bold": require("./app/assets/fonts/Poppins-Bold.ttf"),
-    "Poppins-ExtraBold": require("./app/assets/fonts/Poppins-ExtraBold.ttf"),
-    "Poppins-ExtraLight": require("./app/assets/fonts/Poppins-ExtraLight.ttf"),
-    "Poppins-Light": require("./app/assets/fonts/Poppins-Light.ttf"),
-    "Poppins-Medium": require("./app/assets/fonts/Poppins-Medium.ttf"),
-    "Poppins-Thin": require("./app/assets/fonts/Poppins-Thin.ttf"),
+    "Jost-Regular": require("./app/assets/fonts/Jost-Regular.ttf"),
+    "Jost-SemiBold": require("./app/assets/fonts/Jost-SemiBold.ttf"),
+    "Jost-Bold": require("./app/assets/fonts/Jost-Bold.ttf"),
+    "Jost-ExtraBold": require("./app/assets/fonts/Jost-ExtraBold.ttf"),
+    "Jost-ExtraLight": require("./app/assets/fonts/Jost-ExtraLight.ttf"),
+    "Jost-Light": require("./app/assets/fonts/Jost-Light.ttf"),
+    "Jost-Medium": require("./app/assets/fonts/Jost-Medium.ttf"),
+    "Jost-Thin": require("./app/assets/fonts/Jost-Thin.ttf"),
   });
 
   const [user, setUser] = useState();
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState("dark");
   const [isReady, setIsReady] = useState(false);
   const [initialRoute, setInitialRoute] = useState("Onboarding");
 
@@ -70,16 +70,25 @@ export default function App() {
         <IconRegistry icons={EvaIconsPack} />
         <AuthContext.Provider value={{ user, setUser }}>
           <ThemeContext.Provider value={{ theme, setTheme }}>
-            <ApplicationProvider {...eva} theme={ theme == 'light' ? {...eva.light, ...lightTheme} : {...eva.dark, ...darkTheme} }>
-              <NavigationContainer theme={navigationTheme}>
-                {user ? (
-                  <AppTabNavigator />
-                ) : initialRoute == "Onboarding" ? (
-                  <OnboardingNavigator />
-                ) : (
-                  <AuthNavigator />
-                )}
-              </NavigationContainer>
+            <ApplicationProvider
+              {...eva}
+              theme={
+                theme == "light"
+                  ? { ...eva.light, ...lightTheme }
+                  : { ...eva.dark, ...darkTheme }
+              }
+            >
+              <RootSiblingParent>
+                <NavigationContainer>
+                  {user ? (
+                    <AppTabNavigator />
+                  ) : initialRoute == "Onboarding" ? (
+                    <OnboardingNavigator />
+                  ) : (
+                    <AuthNavigator />
+                  )}
+                </NavigationContainer>
+              </RootSiblingParent>
             </ApplicationProvider>
           </ThemeContext.Provider>
         </AuthContext.Provider>

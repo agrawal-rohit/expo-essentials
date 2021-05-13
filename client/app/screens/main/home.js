@@ -9,13 +9,13 @@ import {
   ActivityIndicator,
 } from "react-native";
 
-import Screen from "../../components/Screen";
+import Page from "../../components/Page";
 import Heading from "../../components/Heading";
 function ShelfHome({ navigation }) {
   return (
-    <Screen paddingBottom={0}>
+    <Page>
         <Heading>Home</Heading>
-    </Screen>
+    </Page>
   );
 }
 

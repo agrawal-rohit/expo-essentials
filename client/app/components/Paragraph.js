@@ -4,8 +4,8 @@ import { Text } from "@ui-kitten/components";
 
 export default function Paragraph({
   children,
-  fontSize = 16,
-  fontWeight = "400",
+  fontSize = 17,
+  fontFamily = "Jost-Regular",
   style,
   ...props
 }) {
@@ -14,8 +14,7 @@ export default function Paragraph({
       category="p1"
       style={{
         fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: "Poppins-Regular",
+        fontFamily: fontFamily,
         ...style,
       }}
       {...props}

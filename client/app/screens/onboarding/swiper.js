@@ -9,7 +9,7 @@ import {
 } from "react-native";
 
 import Onboarding from "react-native-onboarding-swiper";
-import Screen from "../../components/Screen";
+import Page from "../../components/Page";
 import TextLink from "../../components/TextLink";
 
 import { useTheme } from '@ui-kitten/components';
@@ -49,7 +49,7 @@ export default function OnboardingScreen({ navigation }) {
   const theme = useTheme();
 
   return (
-    <Screen withPadding={false}>
+    <Page withPadding={false}>
       <Onboarding
         onSkip={() => navigation.replace("Login")}
         onDone={() => navigation.navigate("Login")}
@@ -98,7 +98,7 @@ export default function OnboardingScreen({ navigation }) {
           },
         ]}
       />
-    </Screen>
+    </Page>
   );
 }
 
@@ -113,12 +113,13 @@ const styles = StyleSheet.create({
   titleStyles: {
     fontSize: 24,
     fontWeight: '800',
-    fontFamily: "Poppins-Bold",
+    fontFamily: "Jost-Bold",
   },
   subTitleStyles: {
-    fontSize: 16,
+    fontSize: 17,
     fontWeight: '700',
-    fontFamily: "Poppins-Regular",
+    fontFamily: "Jost-Regular",
+    marginTop: -10
   },
   image: {
     width: 0.7 * width,

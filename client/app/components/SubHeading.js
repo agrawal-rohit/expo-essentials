@@ -4,8 +4,7 @@ import { Text } from "@ui-kitten/components";
 
 export default function SubHeading({
   children,
-  fontSize = 16,
-  fontWeight = "600",
+  fontSize = 17,
   style,
   ...props
 }) {
@@ -14,8 +13,7 @@ export default function SubHeading({
       category="s1"
       style={{
         fontSize: fontSize,
-        fontWeight: fontWeight,
-        fontFamily: "Poppins-SemiBold",
+        fontFamily: "Jost-SemiBold",
         ...style,
       }}
       {...props}
