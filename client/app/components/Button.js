@@ -12,7 +12,7 @@ export default function CustomButton({ children, loading = false, ...props }) {
 
   const ButtonText = ({children, loading}) => {
     if(loading) return null
-    return <SubHeading fontSize={14} style={{textTransform: 'uppercase'}}>{children}</SubHeading>
+    return <SubHeading style={styles.buttonTextStyle}>{children}</SubHeading>
 }
 
   return <Button children={ButtonText({children, loading})} accessoryLeft={loading ? LoadingIndicator : null} {...props}>
@@ -20,10 +20,10 @@ export default function CustomButton({ children, loading = false, ...props }) {
 }
 
 const styles = StyleSheet.create({
-  buttonStyle: {
-    fontSize: 16,
-    fontFamily: "Jost-Medium",
-    textTransform: 'uppercase'
+  buttonTextStyle: {
+    fontSize: 14,
+    textTransform: 'uppercase',
+    color: 'white'
   },
   indicator: {
     justifyContent: 'center',

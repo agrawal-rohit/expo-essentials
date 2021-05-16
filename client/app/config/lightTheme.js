@@ -20,5 +20,8 @@ export default {
   "background-basic-color-1": "$color-basic-100",
   "background-basic-color-2": "$color-basic-200",
   "background-basic-color-3": "$color-basic-300",
-  "background-basic-color-4": "$color-basic-400"
+  "background-basic-color-4": "$color-basic-400",
+
+  "notification-success": "$color-success-600",
+  "notification-error": "$color-danger-600"
 }

@@ -11,7 +11,7 @@ import {
 import Page from "../../components/Page";
 import Heading from "../../components/Heading";
 import Button from "../../components/Button";
-import SubHeading from "../../components/SubHeading";
+import Toast from "react-native-root-toast";
 
 import AuthContext from "../../contexts/auth";
 import authStorage from "../../auth/storage";
@@ -20,8 +20,16 @@ function ProfileHome({ navigation }) {
   const authContext = useContext(AuthContext);
 
   const handleLogOut = () => {
-    authContext.setUser(null);
-    authStorage.removeToken();
+    
+    Toast.show('Logout Successful', {
+      duration: Toast.durations.SHORT,
+      backgroundColor: theme["notification-success"],
+    });
+
+    setTimeout(() => {
+      authContext.setUser(null);
+      authStorage.removeToken();
+    }, 300);
   };
 
   return (

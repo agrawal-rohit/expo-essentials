@@ -22,10 +22,10 @@ const register = (
     reader_genres,
   });
 
-const check_user_status = () => client.get("/auth/status");
+const checkUserStatus = () => client.get("/auth/status");
 
 export default {
   login,
   register,
-  check_user_status,
+  checkUserStatus,
 };

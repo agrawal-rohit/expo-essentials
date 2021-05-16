@@ -70,7 +70,7 @@ export default function RegisterScreen({ route, navigation }) {
     if (!result.ok) {
       Toast.show(result.data, {
         duration: Toast.durations.SHORT,
-        backgroundColor: theme["color-danger-500"],
+        backgroundColor: theme["notification-error"],
       });
 
       return;
@@ -78,7 +78,7 @@ export default function RegisterScreen({ route, navigation }) {
 
     Toast.show(result.data.message, {
       duration: Toast.durations.SHORT,
-      backgroundColor: theme['color-success-600'],
+      backgroundColor: theme['notification-success'],
     });
 
     setTimeout(() => {
@@ -91,7 +91,7 @@ export default function RegisterScreen({ route, navigation }) {
         index: 0,
         routes: [{ name: "Home" }],
       });
-    }, 1000);
+    }, 300);
   };
 
   return (
