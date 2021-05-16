@@ -76,3 +76,6 @@
 {"message":"Morgan enabled....","level":"info"}
 {"message":"Listening on port 8000...","level":"info"}
 {"message":"Connected to Mongodb","level":"info"}
+{"message":"Morgan enabled....","level":"info"}
+{"message":"Listening on port 8000...","level":"info"}
+{"message":"Connected to Mongodb","level":"info"}

@@ -2,7 +2,6 @@ import React from "react";
 import {
   View,
   Text,
-  Image,
   StyleSheet,
   Dimensions,
   TouchableOpacity,
@@ -11,6 +10,7 @@ import {
 import Onboarding from "react-native-onboarding-swiper";
 import Page from "../../components/Page";
 import TextLink from "../../components/TextLink";
+import Image from '../../components/Image'
 
 import { useTheme } from '@ui-kitten/components';
 
@@ -68,6 +68,7 @@ export default function OnboardingScreen({ navigation }) {
             image: (
               <Image
                 source={require("../../assets/images/onboarding1.png")}
+                cache={false}
                 style={styles.image}
               />
             ),
@@ -79,6 +80,7 @@ export default function OnboardingScreen({ navigation }) {
             image: (
               <Image
                 source={require("../../assets/images/onboarding2.png")}
+                cache={false}
                 style={styles.image}
               />
             ),
@@ -90,6 +92,7 @@ export default function OnboardingScreen({ navigation }) {
             image: (
               <Image
                 source={require("../../assets/images/onboarding3.png")}
+                cache={false}
                 style={styles.image}
               />
             ),

@@ -20,7 +20,7 @@ import { useTheme } from '@ui-kitten/components';
 
 import authApi from "../api/auth";
 import useApi from "../hooks/useApi";
-import authStorage from "../auth/storage";
+import authStorage from "../utilities/authStorage";
 
 const validationSchema = Yup.object({
   first_name: Yup.string().required().label("First name"),
