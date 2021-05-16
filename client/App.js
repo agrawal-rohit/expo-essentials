@@ -39,7 +39,7 @@ export default function App() {
   });
 
   const [user, setUser] = useState();
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [isReady, setIsReady] = useState(false);
   const [initialRoute, setInitialRoute] = useState("Onboarding");
 
