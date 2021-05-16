@@ -8,8 +8,6 @@ import {
   BottomNavigationTab,
   Icon,
 } from "@ui-kitten/components";
-import {SafeAreaView} from 'react-native';
-import SafeScreen from "../components/SafeScreen";
 
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -35,7 +33,6 @@ const BottomTabBar = ({ navigation, state }) => (
 
 export default function AppTabNavigator() {
   return (
-    <SafeScreen>
       <Tab.Navigator
         tabBar={(props) => <BottomTabBar {...props} />}
         initialRouteName="Home"
@@ -80,6 +77,5 @@ export default function AppTabNavigator() {
           }}
         />
       </Tab.Navigator>
-    </SafeScreen>
   );
 }

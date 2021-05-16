@@ -4,7 +4,6 @@ import { createStackNavigator } from "@react-navigation/stack";
 import OnboardingScreen from "../screens/onboarding/swiper";
 import GetStartedScreen from "../screens/onboarding/getstarted";
 import RegisterScreen from "../screens/register";
-import SafeScreen from "../components/SafeScreen";
 
 import AuthNavigator from "./auth";
 
@@ -12,7 +11,6 @@ const Stack = createStackNavigator();
 
 export default function OnboardingNavigator() {
   return (
-    <SafeScreen>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="GetStarted"
@@ -22,6 +20,5 @@ export default function OnboardingNavigator() {
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="Login" component={AuthNavigator} />
       </Stack.Navigator>
-    </SafeScreen>
   );
 }

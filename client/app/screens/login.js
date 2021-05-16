@@ -30,7 +30,7 @@ import Label from "../components/Label";
 // API
 import authApi from "../api/auth";
 import useApi from "../hooks/useApi";
-import authStorage from "../auth/storage";
+import authStorage from "../utilities/authStorage";
 import ActivityIndicator from "../components/ActivityIndicator";
 
 const validationSchema = Yup.object({

@@ -14,7 +14,7 @@ import Button from "../../components/Button";
 import Toast from "react-native-root-toast";
 
 import AuthContext from "../../contexts/auth";
-import authStorage from "../../auth/storage";
+import authStorage from "../../utilities/authStorage";
 
 function ProfileHome({ navigation }) {
   const authContext = useContext(AuthContext);

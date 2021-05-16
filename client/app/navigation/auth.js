@@ -4,14 +4,12 @@ import { createStackNavigator } from "@react-navigation/stack";
 import LoginScreen from "../screens/login";
 import RegisterScreen from "../screens/register";
 import LoadingScreen from "../screens/loading";
-import SafeScreen from "../components/SafeScreen";
 import AppTabNavigator from "./appTab";
 
 const Stack = createStackNavigator();
 
 export default function AuthNavigator() {
   return (
-    <SafeScreen>
       <Stack.Navigator
         screenOptions={{ headerShown: false }}
         initialRouteName="Login"
@@ -21,6 +19,5 @@ export default function AuthNavigator() {
         <Stack.Screen name="Loading" component={LoadingScreen} />
         <Stack.Screen name="Home" component={AppTabNavigator} />
       </Stack.Navigator>
-    </SafeScreen>
   );
 }
