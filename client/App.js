@@ -4,7 +4,7 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { RootSiblingParent } from "react-native-root-siblings";
-import { useColorScheme } from 'react-native';
+import { useColorScheme } from "react-native";
 
 import * as eva from "@eva-design/eva";
 import lightTheme from "./app/config/lightTheme";
@@ -30,6 +30,7 @@ import SafeScreen from "./app/components/SafeScreen";
 import OfflineNotice from "./app/components/OfflineNotice";
 
 export default function App() {
+  // TODO: Update the fonts based on your design
   const [haveFontsLoaded] = useFonts({
     "Jost-Regular": require("./app/assets/fonts/Jost-Regular.ttf"),
     "Jost-SemiBold": require("./app/assets/fonts/Jost-SemiBold.ttf"),

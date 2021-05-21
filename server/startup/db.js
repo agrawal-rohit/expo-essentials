@@ -1,9 +1,10 @@
 const winston = require("winston");
 const mongoose = require("mongoose");
+const settings = require('../config/settings')
 
 module.exports = function () {
   mongoose
-    .connect(`${process.env.DB_URL}/app`, {
+    .connect(`${settings.databaseUrl}/app`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,

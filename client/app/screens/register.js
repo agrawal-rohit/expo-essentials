@@ -7,6 +7,8 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import AuthContext from "../contexts/auth";
 import jwt_decode from "jwt-decode";
 
+import Firebase from "../config/firebase";
+
 // Components
 import Page from "../components/Page";
 import Heading from "../components/Heading";
@@ -16,7 +18,7 @@ import TextInput from "../components/TextInput";
 import TextLink from "../components/TextLink";
 
 import Toast from "react-native-root-toast";
-import { useTheme } from '@ui-kitten/components';
+import { useTheme } from "@ui-kitten/components";
 
 import authApi from "../api/auth";
 import useApi from "../hooks/useApi";
@@ -26,72 +28,83 @@ const validationSchema = Yup.object({
   first_name: Yup.string().required().label("First name"),
   last_name: Yup.string().label("Last Name"),
   email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password"),
+  password: Yup.string().required().min(6).label("Password"),
   passwordConfirmation: Yup.string()
     .required("Password needs to be confirmed")
     .oneOf([Yup.ref("password"), null], "Passwords must match"),
 });
 
-export default function RegisterScreen({ route, navigation }) {
-  const registerApi = useApi(authApi.register);
-
+export default function RegisterScreen({ navigation }) {
+  const [loading, setLoading] = useState(false);
   const authContext = useContext(AuthContext);
   const theme = useTheme();
 
-  const registerHandler = async ({
-    first_name,
-    last_name,
-    email,
-    password,
-  }) => {
-    var readerType;
-    var readerGoals;
-    var readerGenres;
-    try {
-      readerType = route.params.readerType;
-      readerGoals = route.params.readerGoals;
-      readerGenres = route.params.readerGenres;
-    } catch (e) {
-      readerType = null;
-      readerGoals = [];
-      readerGenres = [];
-    }
+  const registerHandler = ({ first_name, last_name, email, password }) => {
+    setLoading(true);
 
-    const result = await registerApi.request(
-      first_name.trim(),
-      last_name.trim(),
-      email,
-      password,
-      readerType,
-      readerGoals,
-      readerGenres
-    );
+    Firebase.auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((res) => {
+        Firebase.auth().onAuthStateChanged(async function (user) {
+          if (user) {
+            var token = await user.getIdToken();
 
-    if (!result.ok) {
-      Toast.show(result.data, {
-        duration: Toast.durations.SHORT,
-        backgroundColor: theme["notification-error"],
+            // Updates the user attributes:
+            Firebase.firestore()
+              .collection("users")
+              .doc(user.uid)
+              .set({
+                email: email,
+                firstName: first_name.trim(),
+                lastName: last_name.trim(),
+              })
+              .then(
+                function () {
+                  // Profile updated successfully!
+                  Toast.show("Registration Successful", {
+                    duration: Toast.durations.SHORT,
+                    backgroundColor: theme["notification-success"],
+                  });
+
+                  user
+                    .sendEmailVerification()
+                    .then(function () {
+                      // Email sent.
+                    })
+                    .catch(function (error) {
+                      // An error happened.
+                    });
+
+                  setLoading(false);
+
+                  setTimeout(() => {
+                    AsyncStorage.setItem("hasOnboarded", "true");
+                    authContext.setUser(user);
+                    authStorage.storeToken(token);
+
+                    navigation.reset({
+                      index: 0,
+                      routes: [{ name: "Home" }],
+                    });
+                  }, 300);
+                },
+                function (error) {
+                  // An error happened.
+                  Toast.show(error, {
+                    duration: Toast.durations.SHORT,
+                    backgroundColor: theme["notification-error"],
+                  });
+                }
+              );
+          }
+        });
+      })
+      .catch((error) => {
+        Toast.show(error, {
+          duration: Toast.durations.SHORT,
+          backgroundColor: theme["notification-error"],
+        });
       });
-
-      return;
-    }
-
-    Toast.show(result.data.message, {
-      duration: Toast.durations.SHORT,
-      backgroundColor: theme['notification-success'],
-    });
-
-    setTimeout(() => {
-      AsyncStorage.setItem("hasOnboarded", "true");
-      var { user } = jwt_decode(result.headers["bearer-token"]);
-      authContext.setUser(user);
-      authStorage.storeToken(result.headers["bearer-token"]);
-
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "Home" }],
-      });
-    }, 300);
   };
 
   return (
@@ -211,7 +224,11 @@ export default function RegisterScreen({ route, navigation }) {
                   />
                 </ScrollView>
 
-                <Button loading={registerApi.loading} onPress={handleSubmit} style={{ marginTop: 20 }}>
+                <Button
+                  loading={loading}
+                  onPress={handleSubmit}
+                  style={{ marginTop: 20 }}
+                >
                   Sign up
                 </Button>
               </>

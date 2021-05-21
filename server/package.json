@@ -6,7 +6,9 @@
     "test:watch": "jest --watch",
     "test:unit": "jest --testPathPattern=test\\.js$",
     "test:integration": "jest --testPathPattern=spec\\.js$",
-    "dev": "nodemon start.js"
+    "dev": "NODE_ENV=development nodemon start.js",
+    "staging": "NODE_ENV=staging node start.js",
+    "prod": "NODE_ENV=prod node start.js"
   },
   "author": "Rohit Agrawal",
   "license": "ISC",
@@ -17,6 +19,7 @@
     "cors": "^2.8.5",
     "debug": "^2.6.9",
     "express": "^4.17.1",
+    "firebase-admin": "^9.8.0",
     "helmet": "^4.4.1",
     "joi": "^17.4.0",
     "joi-objectid": "^3.0.1",

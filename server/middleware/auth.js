@@ -1,5 +1,6 @@
 const jwt = require('jsonwebtoken');
 const {User} = require('../api/auth/models/user');
+const firebase = require('../config/firebase-admin-config')
 
 function extractToken (req) {
     if (req.headers.authorization && req.headers.authorization.split(' ')[0] === 'Bearer') {
@@ -15,18 +16,15 @@ module.exports = async function (req, res, next){
     if(!token) return res.status(401).send('Access Denied')
 
     try{
-        const decodedPayload = jwt.verify(token, process.env.JWT_PRIVATE_KEY)
-        const foundUser = await User.findOne({
-            _id: decodedPayload.user._id
-        })
+        const userPayload = await firebase.auth().verifyIdToken(token);
         
         // User not found
-        if(!foundUser){
+        if(!userPayload){
             res.status(400).send('User does not exist!');
             return;
         }
 
-        req.user = foundUser;
+        req.user = userPayload;
         next()
     }
     catch (ex){
