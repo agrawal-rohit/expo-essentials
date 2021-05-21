@@ -3,6 +3,7 @@ import {
   StyleSheet,
   View,
   ScrollView,
+  TouchableHighlight,
   Dimensions,
   Image,
   Alert,
@@ -17,6 +18,7 @@ import jwt_decode from "jwt-decode";
 
 import Toast from "react-native-root-toast";
 import { useTheme } from "@ui-kitten/components";
+import { Ionicons } from "@expo/vector-icons";
 
 // Components
 import Page from "../components/Page";
@@ -25,53 +27,91 @@ import Paragraph from "../components/Paragraph";
 import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import TextLink from "../components/TextLink";
-import Label from "../components/Label";
+import Modal from "../components/Modal";
+
+import Firebase from "../config/firebase";
 
 // API
 import authApi from "../api/auth";
 import useApi from "../hooks/useApi";
 import authStorage from "../utilities/authStorage";
-import ActivityIndicator from "../components/ActivityIndicator";
 
-const validationSchema = Yup.object({
+const loginValidationSchema = Yup.object({
   email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(4).label("Password"),
+  password: Yup.string().required().min(6).label("Password"),
+});
+
+const resetValidationSchema = Yup.object({
+  email: Yup.string().required().email().label("Email"),
 });
 
 export default function LoginScreen({ navigation }) {
-  const loginApi = useApi(authApi.login);
-
+  const [loading, setLoading] = useState(false);
+  const [modalVisible, setModalVisible] = useState(false);
+  const [resetEmail, setResetEmail] = useState(false);
   const authContext = useContext(AuthContext);
   const theme = useTheme();
 
   const loginHandler = async ({ email, password }) => {
-    const result = await loginApi.request(email, password);
+    setLoading(true);
 
-    if (!result.ok) {
-      Toast.show(result.data, {
-        duration: Toast.durations.SHORT,
-        backgroundColor: theme["notification-error"],
+    Firebase.auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => {
+        Firebase.auth().onAuthStateChanged(async function (user) {
+          if (user) {
+            var token = await user.getIdToken();
+
+            // Profile updated successfully!
+            Toast.show("Login Successful", {
+              duration: Toast.durations.SHORT,
+              backgroundColor: theme["notification-success"],
+            });
+
+            setLoading(false);
+
+            setTimeout(() => {
+              AsyncStorage.setItem("hasOnboarded", "true");
+              authContext.setUser(user);
+              authStorage.storeToken(token);
+
+              navigation.reset({
+                index: 0,
+                routes: [{ name: "Home" }],
+              });
+            }, 300);
+          }
+        });
+      })
+      .catch((error) => {
+        Toast.show(error, {
+          duration: Toast.durations.SHORT,
+          backgroundColor: theme["notification-error"],
+        });
       });
+  };
 
-      return;
-    }
+  const resetPassword = async ({ email }) => {
+    setLoading(true);
+    Firebase.auth()
+      .sendPasswordResetEmail(email)
+      .then(function () {
+        // Email sent.
+        Toast.show("Email sent!", {
+          duration: Toast.durations.SHORT,
+          backgroundColor: theme["notification-success"],
+        });
 
-    Toast.show(result.data.message, {
-      duration: Toast.durations.SHORT,
-      backgroundColor: theme["notification-success"],
-    });
-
-    setTimeout(() => {
-      AsyncStorage.setItem("hasOnboarded", "true");
-      var { user } = jwt_decode(result.headers["bearer-token"]);
-      authContext.setUser(user);
-      authStorage.storeToken(result.headers["bearer-token"]);
-
-      navigation.reset({
-        index: 0,
-        routes: [{ name: "Home" }],
+        setModalVisible(false);
+        setLoading(false);
+      })
+      .catch(function (error) {
+        // An error happened.
+        Toast.show(error, {
+          duration: Toast.durations.SHORT,
+          backgroundColor: theme["notification-error"],
+        });
       });
-    }, 300);
   };
 
   return (
@@ -86,7 +126,7 @@ export default function LoginScreen({ navigation }) {
               password: "",
             }}
             onSubmit={loginHandler}
-            validationSchema={validationSchema}
+            validationSchema={loginValidationSchema}
           >
             {({
               handleChange,
@@ -128,7 +168,7 @@ export default function LoginScreen({ navigation }) {
                     errorVisible={touched.password}
                   />
                   <TextLink
-                    onPress={() => console.log("Forgot Password")}
+                    onPress={() => setModalVisible(true)}
                     style={{ alignSelf: "flex-end", marginTop: 10 }}
                   >
                     Forgot Password?
@@ -136,7 +176,7 @@ export default function LoginScreen({ navigation }) {
                 </ScrollView>
 
                 <Button
-                  loading={loginApi.loading}
+                  loading={loading}
                   onPress={handleSubmit}
                   style={{ marginTop: 20 }}
                 >
@@ -156,6 +196,53 @@ export default function LoginScreen({ navigation }) {
           </View>
         </KeyboardAwareScrollView>
       </Page>
+      <Modal
+        visible={modalVisible}
+        modalTitle="Reset password"
+        onClose={() => setModalVisible(false)}
+      >
+        <Paragraph style={{marginBottom: 10}}>Enter your email address</Paragraph>
+
+        <Formik
+          initialValues={{
+            email: "",
+          }}
+          onSubmit={resetPassword}
+          validationSchema={resetValidationSchema}
+        >
+          {({
+            handleChange,
+            handleSubmit,
+            errors,
+            setFieldTouched,
+            touched,
+            values,
+          }) => (
+            <>
+              <TextInput
+                placeholder="Email"
+                autoCompleteType="email"
+                keyboardType="email-address"
+                returnKeyType="next"
+                textContentType="emailAddress"
+                autoCapitalize="none"
+                value={values.email}
+                onChangeText={handleChange("email")}
+                errorMessage={errors.email}
+                onBlur={() => setFieldTouched("email")}
+                errorVisible={touched.email}
+              />
+              <Button
+                loading={loading}
+                onPress={handleSubmit}
+                style={{ marginTop: 20 }}
+              >
+                Send password reset email
+              </Button>
+            </>
+          )}
+        </Formik>
+      </Modal>
     </>
   );
 }

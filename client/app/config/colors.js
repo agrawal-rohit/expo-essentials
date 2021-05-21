@@ -1,4 +1,4 @@
-// Created with EVA Design System
+// TODO: Add your color theme created with EVA Design System
 
 export default {
   "color-primary-100": "#F1D6FF",
