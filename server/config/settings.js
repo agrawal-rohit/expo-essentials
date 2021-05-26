@@ -1,9 +1,11 @@
+
+
 const settings = {
   dev: {
     port: 8000,
     environment: 'development',
     debug: "nawvel:*",
-    databaseUrl: "mongodb://mongo:27017",
+    databaseUrl: "mongodb://mongo:27017/app",
     firebaseDatabaseUrl: 'https://coinpace-dev.firebaseio.com'
   },
   staging: {

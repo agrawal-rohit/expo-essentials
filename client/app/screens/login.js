@@ -16,8 +16,11 @@ import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view
 import AuthContext from "../contexts/auth";
 import jwt_decode from "jwt-decode";
 
+import { AntDesign } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
+
 import Toast from "react-native-root-toast";
-import { useTheme } from "@ui-kitten/components";
+import { useTheme, Divider } from "@ui-kitten/components";
 import { Ionicons } from "@expo/vector-icons";
 
 // Components
@@ -28,6 +31,7 @@ import Button from "../components/Button";
 import TextInput from "../components/TextInput";
 import TextLink from "../components/TextLink";
 import Modal from "../components/Modal";
+import Caption from "../components/Caption";
 
 import Firebase from "../config/firebase";
 
@@ -186,6 +190,39 @@ export default function LoginScreen({ navigation }) {
             )}
           </Formik>
 
+          {/* <View
+            style={{
+              flexDirection: "row",
+              marginTop: 10,
+              justifyContent: "space-between",
+            }}
+          >
+            <Divider
+              style={{ flex: 1, marginRight: 10, alignSelf: "center" }}
+            ></Divider>
+            <Caption appearance="hint" style={{ alignSelf: "center" }}>
+              or connect with
+            </Caption>
+            <Divider
+              style={{ flex: 1, marginLeft: 10, alignSelf: "center" }}
+            ></Divider>
+          </View>
+
+          <View
+            style={{
+              flexDirection: "row",
+              marginTop: 10,
+              justifyContent: "space-between",
+            }}
+          >
+            <Button color="#4285F4" style={{ flex: 1, marginRight: 10 }}>
+              <AntDesign name="google" size={16} color="white" />
+            </Button>
+            <Button color="#3b5999" style={{ flex: 1 }}>
+              <FontAwesome name="facebook" size={16} color="white" />
+            </Button>
+          </View> */}
+
           <View
             style={{ marginTop: 20, marginBottom: 10, flexDirection: "row" }}
           >
@@ -201,7 +238,9 @@ export default function LoginScreen({ navigation }) {
         modalTitle="Reset password"
         onClose={() => setModalVisible(false)}
       >
-        <Paragraph style={{marginBottom: 10}}>Enter your email address</Paragraph>
+        <Paragraph style={{ marginBottom: 10 }}>
+          Enter your email address
+        </Paragraph>
 
         <Formik
           initialValues={{
