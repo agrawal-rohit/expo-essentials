@@ -4,7 +4,7 @@ const settings = require('../config/settings')
 
 module.exports = function () {
   mongoose
-    .connect(`${settings.databaseUrl}/app`, {
+    .connect(`${settings.databaseUrl}`, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
       useFindAndModify: false,
