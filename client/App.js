@@ -45,7 +45,7 @@ export default function App() {
   const systemThemeStyle = useColorScheme();
 
   const [user, setUser] = useState();
-  const [theme, setTheme] = useState('dark');
+  const [theme, setTheme] = useState(systemThemeStyle);
   const [isReady, setIsReady] = useState(false);
   const [initialRoute, setInitialRoute] = useState("Onboarding");
 
