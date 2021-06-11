@@ -1,6 +1,10 @@
-![logo](img/logo.png)
+<img src="./img/logo.png" alt="welcome" width="500"/>
 
-*(Work in Progress. Please be patient :))*
+<p float="left">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/agrawal-rohit/expo-essentials">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/agrawal-rohit/expo-essentials">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials">
+</p>
 
 # Overview
 An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure and essential features to get you up and running on your next app.
