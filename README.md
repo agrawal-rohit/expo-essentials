@@ -2,10 +2,10 @@
 
 *(Work in Progress. Please be patient :))*
 
-## Overview
+# Overview
 An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure and essential features to get you up and running on your next app.
 
-## Table of Contents
+# Table of Contents
 1. [Key features](#key-features)
 2. [Usage](#usage)
     1. [Installation](#installation)
@@ -17,7 +17,7 @@ An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containi
     4. [Home](#home-screen)
 4. [How to Contribute](#how-to-contribute)
 
-## Key features
+# Key features
 - 📱 All Expo features (Hot reloading, Cross-platform, Splash screen, etc)
 - 🎨 Easy theme configuration (Color palette and fonts)
 - 🌗 Light and Dark mode
@@ -36,9 +36,9 @@ An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containi
 
 *(...and many more coming soon!)*
 
-## Usage
+# Usage
 
-#### Installation
+## Installation
 
 1. Clone/Fork this repo (based on your preference)
 2. Start the mobile app
@@ -51,49 +51,62 @@ An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containi
     $ docker-compose up --build
     ```
 
-#### Setting a theme
+## Setting a theme
 
 (WIP)
 
-## Screens
+# Screens
 
-#### Welcome Screen
+## Welcome Screen
 
+<p float="left">
 <img src="./img/welcome.png" alt="welcome" width="195"/>
 <img src="./img/welcome_dark.png" alt="welcome" width="195"/>
+</p>
 
+## Onboarding Screen
 
-#### Onboarding Screen
-
+<p float="left">
 <img src="./img/onboarding1.png" alt="welcome" width="195"/>
 <img src="./img/onboarding2.png" alt="welcome" width="195"/>
 <img src="./img/onboarding3.png" alt="welcome" width="195"/>
+</p>
 
+<p float="left">
 <img src="./img/onboarding1_dark.png" alt="welcome" width="195"/>
 <img src="./img/onboarding2_dark.png" alt="welcome" width="195"/>
 <img src="./img/onboarding3_dark.png" alt="welcome" width="195"/>
+</p>
+    
+## Authentication Screen
 
-#### Authentication Screen
-
+<p float="left">
 <img src="./img/login.png" alt="welcome" width="195"/>
 <img src="./img/register.png" alt="welcome" width="195"/>
 <img src="./img/reset_password.png" alt="welcome" width="195"/>
+</p>
 
+<p float="left">
 <img src="./img/login_dark.png" alt="welcome" width="195"/>
 <img src="./img/register_dark.png" alt="welcome" width="195"/>
 <img src="./img/reset_password_dark.png" alt="welcome" width="195"/>
+</p>
 
-#### Home Screen
+## Home Screen
 
+<p float="left">
 <img src="./img/browse.png" alt="welcome" width="195"/>
 <img src="./img/home.png" alt="welcome" width="195"/>
 <img src="./img/profile.png" alt="welcome" width="195"/>
+</p>
 
+<p float="left">
 <img src="./img/browse_dark.png" alt="welcome" width="195"/>
 <img src="./img/home_dark.png" alt="welcome" width="195"/>
 <img src="./img/profile_dark.png" alt="welcome" width="195"/>
+</p>
 
-## How to Contribute
+# How to Contribute
 1. Fork the repository
 2. Add a bug fix or new feature addition and create a pull request to this repo
 3. Write a detailed list of changes proposed in the pull request description
