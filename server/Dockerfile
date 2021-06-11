@@ -1,21 +1,25 @@
-FROM node:10.16-alpine as dev
+FROM node:10.16-alpine
 
 RUN apk --no-cache add --virtual builds-deps build-base python
+RUN apk add --no-cache bash
 
-# Create App Directory
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-# Install Dependencies
-COPY package.json /usr/src/app/
-COPY package-lock.json /usr/src/app/
+# Install PM2 globally
+RUN npm install --global pm2
 
-RUN npm install --only=production
+# Install Dependencies
+COPY package.json .
+COPY package-lock.json .
+
+RUN npm install
 
 # Copy app source code
-COPY . /usr/src/app
+COPY . .
 
 # Exports
 EXPOSE 8000
 
-CMD ["npm","start"]
+# Run npm start script with PM2 when container starts
+CMD [ "pm2-runtime", "npm", "--name=nawvel", "--", "run", "start:prod"]

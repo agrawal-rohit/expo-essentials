@@ -17,10 +17,11 @@ services:
       context: ./server
       dockerfile: Dockerfile.dev
     restart: always
-    command: npm run dev
+    command: npm run start:dev
     volumes:
       - ./server/:/usr/src/app
       - /usr/src/app/node_modules
+    env_file: ./server/.env.dev
     ports:
       - '8000:8000'
     depends_on:

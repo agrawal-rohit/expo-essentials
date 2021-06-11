@@ -37,7 +37,7 @@ function ProfileHome({ navigation }) {
   return (
     <Page>
       <Heading>Profile</Heading>
-      <Button onPress={handleLogOut}>Log Out</Button>
+      <Button status='danger' onPress={handleLogOut}>Log Out</Button>
     </Page>
   );
 }
