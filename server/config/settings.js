@@ -1,25 +1,10 @@
-
-
 const settings = {
-  dev: {
-    port: 8000,
-    environment: 'development',
-    debug: "nawvel:*",
-    databaseUrl: "mongodb://mongo:27017/app",
-    firebaseDatabaseUrl: 'https://coinpace-dev.firebaseio.com'
-  },
-  staging: {
-
-  },
-  prod: {},
+  port: process.env.PORT,
+  environment: process.env.NODE_ENV,
+  debug: process.env.DEBUG,
+  databaseUrl: process.env.DB_URL,
+  firebaseDatabaseUrl: process.env.FIREBASE_DB_URL,
+  jwtPrivateKey: process.env.JWT_PRIVATE_KEY,
 };
 
-const getCurrentSettings = () => {
-  if (process.env.NODE_ENV == "development") return settings.dev;
-
-  if (process.env.NODE_ENV == "staging") return settings.staging;
-
-  return settings.prod;
-};
-
-module.exports = getCurrentSettings();
+module.exports = settings;

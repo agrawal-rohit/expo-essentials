@@ -72,8 +72,8 @@ export default function OnboardingScreen({ navigation }) {
                 style={styles.image}
               />
             ),
-            title: "Make reading fun",
-            subtitle: "Read like a video game",
+            title: "Feature title 1",
+            subtitle: "Feature caption 1",
           },
           {
             backgroundColor: theme['background-basic-color-1'],
@@ -84,8 +84,8 @@ export default function OnboardingScreen({ navigation }) {
                 style={styles.image}
               />
             ),
-            title: "Get good",
-            subtitle: "Keep Learning and achieve your goals",
+            title: "Feature title 2",
+            subtitle: "Feature caption 2",
           },
           {
             backgroundColor: theme['background-basic-color-1'],
@@ -96,8 +96,8 @@ export default function OnboardingScreen({ navigation }) {
                 style={styles.image}
               />
             ),
-            title: "Make it a habit",
-            subtitle: "Stay accountable with reading groups",
+            title: "Feature title 3",
+            subtitle: "Feature caption 3",
           },
         ]}
       />
