@@ -9,10 +9,10 @@
 # Overview
 
 <p float="left">
-<img src="./img/welcome.png" alt="welcome" width="140"/>
-<img src="./img/onboarding1.png" alt="welcome" width="140"/>
-<img src="./img/login.png" alt="welcome" width="143"/>
-<img src="./img/home.png" alt="welcome" width="143"/>
+<img src="./img/welcome.png" alt="welcome" width="200"/>
+<img src="./img/onboarding1.png" alt="welcome" width="200"/>
+<img src="./img/login.png" alt="welcome" width="203"/>
+<img src="./img/home.png" alt="welcome" width="203"/>
 </p>
 
 An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure and essential features to get you up and running on your next app.
@@ -72,50 +72,50 @@ An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containi
 ## Welcome Screen
 
 <p float="left">
-<img src="./img/welcome.png" alt="welcome" width="195"/>
-<img src="./img/welcome_dark.png" alt="welcome" width="195"/>
+<img src="./img/welcome.png" alt="welcome" width="230"/>
+<img src="./img/welcome_dark.png" alt="welcome" width="230"/>
 </p>
 
 ## Onboarding Screen
 
 <p float="left">
-<img src="./img/onboarding1.png" alt="welcome" width="195"/>
-<img src="./img/onboarding2.png" alt="welcome" width="195"/>
-<img src="./img/onboarding3.png" alt="welcome" width="195"/>
+<img src="./img/onboarding1.png" alt="welcome" width="230"/>
+<img src="./img/onboarding2.png" alt="welcome" width="230"/>
+<img src="./img/onboarding3.png" alt="welcome" width="230"/>
 </p>
 
 <p float="left">
-<img src="./img/onboarding1_dark.png" alt="welcome" width="195"/>
-<img src="./img/onboarding2_dark.png" alt="welcome" width="195"/>
-<img src="./img/onboarding3_dark.png" alt="welcome" width="195"/>
+<img src="./img/onboarding1_dark.png" alt="welcome" width="230"/>
+<img src="./img/onboarding2_dark.png" alt="welcome" width="230"/>
+<img src="./img/onboarding3_dark.png" alt="welcome" width="230"/>
 </p>
     
 ## Authentication Screen
 
 <p float="left">
-<img src="./img/login.png" alt="welcome" width="195"/>
-<img src="./img/register.png" alt="welcome" width="195"/>
-<img src="./img/reset_password.png" alt="welcome" width="195"/>
+<img src="./img/login.png" alt="welcome" width="230"/>
+<img src="./img/register.png" alt="welcome" width="230"/>
+<img src="./img/reset_password.png" alt="welcome" width="230"/>
 </p>
 
 <p float="left">
-<img src="./img/login_dark.png" alt="welcome" width="195"/>
-<img src="./img/register_dark.png" alt="welcome" width="195"/>
-<img src="./img/reset_password_dark.png" alt="welcome" width="195"/>
+<img src="./img/login_dark.png" alt="welcome" width="230"/>
+<img src="./img/register_dark.png" alt="welcome" width="230"/>
+<img src="./img/reset_password_dark.png" alt="welcome" width="230"/>
 </p>
 
 ## Home Screen
 
 <p float="left">
-<img src="./img/browse.png" alt="welcome" width="195"/>
-<img src="./img/home.png" alt="welcome" width="195"/>
-<img src="./img/profile.png" alt="welcome" width="195"/>
+<img src="./img/browse.png" alt="welcome" width="230"/>
+<img src="./img/home.png" alt="welcome" width="230"/>
+<img src="./img/profile.png" alt="welcome" width="230"/>
 </p>
 
 <p float="left">
-<img src="./img/browse_dark.png" alt="welcome" width="195"/>
-<img src="./img/home_dark.png" alt="welcome" width="195"/>
-<img src="./img/profile_dark.png" alt="welcome" width="195"/>
+<img src="./img/browse_dark.png" alt="welcome" width="230"/>
+<img src="./img/home_dark.png" alt="welcome" width="230"/>
+<img src="./img/profile_dark.png" alt="welcome" width="230"/>
 </p>
 
 # How to Contribute
