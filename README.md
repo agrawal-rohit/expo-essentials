@@ -7,6 +7,14 @@
 </p>
 
 # Overview
+
+<p float="left">
+<img src="./img/welcome.png" alt="welcome" width="140"/>
+<img src="./img/onboarding1.png" alt="welcome" width="140"/>
+<img src="./img/login.png" alt="welcome" width="143"/>
+<img src="./img/home.png" alt="welcome" width="143"/>
+</p>
+
 An opiniated boilerplate built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure and essential features to get you up and running on your next app.
 
 # Table of Contents
