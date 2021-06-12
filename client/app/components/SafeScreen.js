@@ -1,13 +1,19 @@
-import React from "react";
+import React from 'react';
 import {
   SafeAreaView,
-  View,
   StyleSheet,
   StatusBar,
   Platform,
-} from "react-native";
-import { Layout } from "@ui-kitten/components";
-import colors from "../config/colors";
+} from 'react-native';
+import { Layout } from '@ui-kitten/components';
+
+const styles = StyleSheet.create({
+  safeAreaContainer: {
+    flex: 1,
+    padding: 20,
+    paddingTop: Platform.OS === 'android' ? StatusBar.currentHeight : 0,
+  },
+});
 
 export default function SafeScreen({ children, level = '1' }) {
   return (
@@ -18,16 +24,8 @@ export default function SafeScreen({ children, level = '1' }) {
       }}
     >
       <SafeAreaView style={styles.safeAreaContainer}>
-          {children}
+        {children}
       </SafeAreaView>
     </Layout>
   );
 }
-
-const styles = StyleSheet.create({
-  safeAreaContainer: {
-    flex: 1,
-    padding: 20,
-    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
-  },
-});

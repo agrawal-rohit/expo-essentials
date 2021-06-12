@@ -1,0 +1,27 @@
+name: Build
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Prepare source code
+        uses: actions/checkout@v2
+
+      - name: Run app tests
+        run: cd client && npm run testFinal
+
+      - name: Upload app coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./client/coverage/coverage-final.json
+          flags: ui-tests
+
+      - name: Run server tests
+        run: docker-compose run server /bin/sh -c "npm run test"
+
+      - name: Upload server coverage report
+        uses: codecov/codecov-action@v1
+        with:
+          files: ./server/coverage/coverage-final.json
+          flags: server-tests

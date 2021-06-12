@@ -1,7 +1,7 @@
-import React, { useContext } from "react";
-import { Image } from "react-native";
-import { Image as CacheImage } from "react-native-expo-image-cache";
-import { ThemeContext } from "../contexts/theme-context";
+import React, { useContext } from 'react';
+import { Image } from 'react-native';
+import { Image as CacheImage } from 'react-native-expo-image-cache';
+import { ThemeContext } from '../contexts/theme-context';
 
 export default function CustomImage({
   source = null,

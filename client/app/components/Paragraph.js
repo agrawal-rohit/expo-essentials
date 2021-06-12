@@ -1,11 +1,10 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { Text } from "@ui-kitten/components";
+import React from 'react';
+import { Text } from '@ui-kitten/components';
 
 export default function Paragraph({
   children,
   fontSize = 17,
-  fontFamily = "Jost-Regular",
+  fontFamily = 'Jost-Regular',
   style,
   ...props
 }) {
@@ -13,8 +12,8 @@ export default function Paragraph({
     <Text
       category="p1"
       style={{
-        fontSize: fontSize,
-        fontFamily: fontFamily,
+        fontSize,
+        fontFamily,
         ...style,
       }}
       {...props}

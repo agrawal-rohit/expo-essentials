@@ -1,11 +1,11 @@
-import colors from './colors';
+/* eslint-disable quotes */
+import colors from "./colors";
 
 export default {
-  
   ...colors,
 
   "text-basic-color": "$color-basic-100",
-  
+
   "color-primary-default": "$color-primary-500",
   "color-primary-hover": "$color-primary-400",
   "color-primary-focus": "$color-primary-600",
@@ -23,5 +23,5 @@ export default {
   "background-basic-color-4": "$color-basic-1100",
 
   "notification-success": "$color-success-600",
-  "notification-error": "$color-danger-600"
-}
+  "notification-error": "$color-danger-600",
+};

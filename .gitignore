@@ -1,5 +1,12 @@
-client/.env
-
 node_modules
+
+client/.env
+client/coverage
+client/.expo
+client/.expo-shared
+
+server/*.log
+server/coverage
+server/.env
+
 .DS_store
-*.log

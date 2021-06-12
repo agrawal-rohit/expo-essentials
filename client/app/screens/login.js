@@ -1,58 +1,44 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext } from 'react';
 import {
-  StyleSheet,
   View,
   ScrollView,
-  TouchableHighlight,
-  Dimensions,
-  Image,
-  Alert,
-} from "react-native";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import colors from "../config/colors";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import AuthContext from "../contexts/auth";
-import jwt_decode from "jwt-decode";
+} from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 
-import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
+import Toast from 'react-native-root-toast';
+import { useTheme } from '@ui-kitten/components';
 
-import Toast from "react-native-root-toast";
-import { useTheme, Divider } from "@ui-kitten/components";
-import { Ionicons } from "@expo/vector-icons";
+import AuthContext from '../contexts/auth';
 
 // Components
-import Page from "../components/Page";
-import Heading from "../components/Heading";
-import Paragraph from "../components/Paragraph";
-import Button from "../components/Button";
-import TextInput from "../components/TextInput";
-import TextLink from "../components/TextLink";
-import Modal from "../components/Modal";
-import Caption from "../components/Caption";
+import Page from '../components/Page';
+import Heading from '../components/Heading';
+import Paragraph from '../components/Paragraph';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
+import TextLink from '../components/TextLink';
+import Modal from '../components/Modal';
 
-import Firebase from "../config/firebase";
+import Firebase from '../config/firebase';
 
 // API
-import authApi from "../api/auth";
-import useApi from "../hooks/useApi";
-import authStorage from "../utilities/authStorage";
+import authStorage from '../utilities/authStorage';
 
 const loginValidationSchema = Yup.object({
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(6).label("Password"),
+  email: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(6).label('Password'),
 });
 
 const resetValidationSchema = Yup.object({
-  email: Yup.string().required().email().label("Email"),
+  email: Yup.string().required().email().label('Email'),
 });
 
 export default function LoginScreen({ navigation }) {
   const [loading, setLoading] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
-  const [resetEmail, setResetEmail] = useState(false);
   const authContext = useContext(AuthContext);
   const theme = useTheme();
 
@@ -62,26 +48,26 @@ export default function LoginScreen({ navigation }) {
     Firebase.auth()
       .signInWithEmailAndPassword(email, password)
       .then(() => {
-        Firebase.auth().onAuthStateChanged(async function (user) {
+        Firebase.auth().onAuthStateChanged(async (user) => {
           if (user) {
-            var token = await user.getIdToken();
+            const token = await user.getIdToken();
 
             // Profile updated successfully!
-            Toast.show("Login Successful", {
+            Toast.show('Login Successful', {
               duration: Toast.durations.SHORT,
-              backgroundColor: theme["notification-success"],
+              backgroundColor: theme['notification-success'],
             });
 
             setLoading(false);
 
             setTimeout(() => {
-              AsyncStorage.setItem("hasOnboarded", "true");
+              AsyncStorage.setItem('hasOnboarded', 'true');
               authContext.setUser(user);
               authStorage.storeToken(token);
 
               navigation.reset({
                 index: 0,
-                routes: [{ name: "Home" }],
+                routes: [{ name: 'Home' }],
               });
             }, 300);
           }
@@ -90,7 +76,7 @@ export default function LoginScreen({ navigation }) {
       .catch((error) => {
         Toast.show(error, {
           duration: Toast.durations.SHORT,
-          backgroundColor: theme["notification-error"],
+          backgroundColor: theme['notification-error'],
         });
       });
   };
@@ -99,21 +85,21 @@ export default function LoginScreen({ navigation }) {
     setLoading(true);
     Firebase.auth()
       .sendPasswordResetEmail(email)
-      .then(function () {
+      .then(() => {
         // Email sent.
-        Toast.show("Email sent!", {
+        Toast.show('Email sent!', {
           duration: Toast.durations.SHORT,
-          backgroundColor: theme["notification-success"],
+          backgroundColor: theme['notification-success'],
         });
 
         setModalVisible(false);
         setLoading(false);
       })
-      .catch(function (error) {
+      .catch((error) => {
         // An error happened.
         Toast.show(error, {
           duration: Toast.durations.SHORT,
-          backgroundColor: theme["notification-error"],
+          backgroundColor: theme['notification-error'],
         });
       });
   };
@@ -126,8 +112,8 @@ export default function LoginScreen({ navigation }) {
 
           <Formik
             initialValues={{
-              email: "",
-              password: "",
+              email: '',
+              password: '',
             }}
             onSubmit={loginHandler}
             validationSchema={loginValidationSchema}
@@ -151,9 +137,9 @@ export default function LoginScreen({ navigation }) {
                     textContentType="emailAddress"
                     autoCapitalize="none"
                     value={values.email}
-                    onChangeText={handleChange("email")}
+                    onChangeText={handleChange('email')}
                     errorMessage={errors.email}
-                    onBlur={() => setFieldTouched("email")}
+                    onBlur={() => setFieldTouched('email')}
                     errorVisible={touched.email}
                   />
                   {/* <Label style={{marginBottom: 10}}>Password</Label> */}
@@ -164,16 +150,16 @@ export default function LoginScreen({ navigation }) {
                     returnKeyType="next"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    secure={true}
+                    secure
                     value={values.password}
-                    onChangeText={handleChange("password")}
+                    onChangeText={handleChange('password')}
                     errorMessage={errors.password}
-                    onBlur={() => setFieldTouched("password")}
+                    onBlur={() => setFieldTouched('password')}
                     errorVisible={touched.password}
                   />
                   <TextLink
                     onPress={() => setModalVisible(true)}
-                    style={{ alignSelf: "flex-end", marginTop: 10 }}
+                    style={{ alignSelf: 'flex-end', marginTop: 10 }}
                   >
                     Forgot Password?
                   </TextLink>
@@ -224,10 +210,10 @@ export default function LoginScreen({ navigation }) {
           </View> */}
 
           <View
-            style={{ marginTop: 20, marginBottom: 10, flexDirection: "row" }}
+            style={{ marginTop: 20, marginBottom: 10, flexDirection: 'row' }}
           >
             <Paragraph style={{ marginRight: 10 }}>New user?</Paragraph>
-            <TextLink onPress={() => navigation.navigate("Register")}>
+            <TextLink onPress={() => navigation.navigate('Register')}>
               Create account
             </TextLink>
           </View>
@@ -244,7 +230,7 @@ export default function LoginScreen({ navigation }) {
 
         <Formik
           initialValues={{
-            email: "",
+            email: '',
           }}
           onSubmit={resetPassword}
           validationSchema={resetValidationSchema}
@@ -266,9 +252,9 @@ export default function LoginScreen({ navigation }) {
                 textContentType="emailAddress"
                 autoCapitalize="none"
                 value={values.email}
-                onChangeText={handleChange("email")}
+                onChangeText={handleChange('email')}
                 errorMessage={errors.email}
-                onBlur={() => setFieldTouched("email")}
+                onBlur={() => setFieldTouched('email')}
                 errorVisible={touched.email}
               />
               <Button
@@ -285,5 +271,3 @@ export default function LoginScreen({ navigation }) {
     </>
   );
 }
-
-const styles = StyleSheet.create({});
