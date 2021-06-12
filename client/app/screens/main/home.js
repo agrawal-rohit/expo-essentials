@@ -1,20 +1,12 @@
-import React, { useState, useEffect, useContext } from "react";
-import {
-  StyleSheet,
-  Dimensions,
-  ScrollView,
-  RefreshControl,
-  View,
-  TouchableOpacity,
-  ActivityIndicator,
-} from "react-native";
+import React from 'react';
 
-import Page from "../../components/Page";
-import Heading from "../../components/Heading";
-function ShelfHome({ navigation }) {
+import Page from '../../components/Page';
+import Heading from '../../components/Heading';
+
+function ShelfHome() {
   return (
     <Page>
-        <Heading>Home</Heading>
+      <Heading>Home</Heading>
     </Page>
   );
 }

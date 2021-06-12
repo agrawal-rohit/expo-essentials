@@ -1,3 +1,4 @@
+/* eslint-disable quotes */
 // TODO: Add your color theme created with EVA Design System
 
 export default {

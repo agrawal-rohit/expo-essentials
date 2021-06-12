@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { useState } from 'react';
 
-export default useApi = (apiFunc) => {
+export default (apiFunc) => {
   const [data, setData] = useState(null);
   const [error, setError] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState('');
   const [loading, setLoading] = useState(false);
 
   const request = async (...args) => {
@@ -20,5 +20,7 @@ export default useApi = (apiFunc) => {
     return response;
   };
 
-  return { data, error, loading, errorMessage, request };
+  return {
+    data, error, loading, errorMessage, request,
+  };
 };

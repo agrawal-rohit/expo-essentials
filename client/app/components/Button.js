@@ -1,7 +1,19 @@
-import React from "react";
-import { View, StyleSheet, TouchableOpacity } from "react-native";
-import { Button, Spinner } from "@ui-kitten/components";
-import SubHeading from "./SubHeading";
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import { Button, Spinner } from '@ui-kitten/components';
+import SubHeading from './SubHeading';
+
+const styles = StyleSheet.create({
+  buttonTextStyle: {
+    fontSize: 14,
+    textTransform: 'uppercase',
+    color: 'white',
+  },
+  indicator: {
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+});
 
 export default function CustomButton({
   children,
@@ -10,7 +22,7 @@ export default function CustomButton({
   style = {},
   ...props
 }) {
-  const LoadingIndicator = (props) => (
+  const LoadingIndicator = () => (
     <View style={styles.indicator}>
       <Spinner status="basic" size="small" />
     </View>
@@ -29,28 +41,16 @@ export default function CustomButton({
         accessoryLeft={loading ? LoadingIndicator : null}
         style={{ ...style, backgroundColor: color, borderColor: color }}
         {...props}
-      ></Button>
-    );
-  } else {
-    return (
-      <Button
-        children={ButtonText({ children, loading })}
-        accessoryLeft={loading ? LoadingIndicator : null}
-        style={style}
-        {...props}
-      ></Button>
+      />
     );
   }
-}
 
-const styles = StyleSheet.create({
-  buttonTextStyle: {
-    fontSize: 14,
-    textTransform: "uppercase",
-    color: "white",
-  },
-  indicator: {
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+  return (
+    <Button
+      children={ButtonText({ children, loading })}
+      accessoryLeft={loading ? LoadingIndicator : null}
+      style={style}
+      {...props}
+    />
+  );
+}

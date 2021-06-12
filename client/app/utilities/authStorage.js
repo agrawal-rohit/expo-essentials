@@ -1,22 +1,24 @@
-import * as SecureStore from "expo-secure-store";
-import jwt_decode from "jwt-decode";
-import authApi from "../api/auth";
+import * as SecureStore from 'expo-secure-store';
+// eslint-disable-next-line camelcase
+import jwt_decode from 'jwt-decode';
+// eslint-disable-next-line import/no-cycle
+import authApi from '../api/auth';
 
-const key = "authToken";
+const key = 'authToken';
 
 const storeToken = async (authToken) => {
   try {
     await SecureStore.setItemAsync(key, authToken);
   } catch (error) {
-    console.log("Error storing auth token", error);
+    console.log('Error storing auth token', error);
   }
 };
 
 const getToken = async () => {
   try {
-    return await SecureStore.getItemAsync(key);
+    await SecureStore.getItemAsync(key);
   } catch (error) {
-    console.log("Error getting auth token", error);
+    console.log('Error getting auth token', error);
   }
 };
 
@@ -31,8 +33,10 @@ const removeToken = async () => {
   try {
     await SecureStore.deleteItemAsync(key);
   } catch (error) {
-    console.log("Error removing auth token", error);
+    console.log('Error removing auth token', error);
   }
 };
 
-export default { getToken, getUser, storeToken, removeToken };
+export default {
+  getToken, getUser, storeToken, removeToken,
+};

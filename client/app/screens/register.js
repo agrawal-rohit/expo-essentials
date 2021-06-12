@@ -1,41 +1,35 @@
-import React, { useState, useContext } from "react";
-import { StyleSheet, View, ScrollView, Image, Alert } from "react-native";
-import { Formik } from "formik";
-import * as Yup from "yup";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
-import AuthContext from "../contexts/auth";
-import jwt_decode from "jwt-decode";
+import React, { useState, useContext } from 'react';
+import {
+  View, ScrollView,
+} from 'react-native';
+import { Formik } from 'formik';
+import * as Yup from 'yup';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import Toast from 'react-native-root-toast';
+import { useTheme } from '@ui-kitten/components';
+import AuthContext from '../contexts/auth';
 
-import { AntDesign } from "@expo/vector-icons";
-import { FontAwesome } from "@expo/vector-icons";
-
-import Firebase from "../config/firebase";
+import Firebase from '../config/firebase';
 
 // Components
-import Page from "../components/Page";
-import Heading from "../components/Heading";
-import Paragraph from "../components/Paragraph";
-import Button from "../components/Button";
-import TextInput from "../components/TextInput";
-import TextLink from "../components/TextLink";
-import Caption from "../components/Caption";
+import Page from '../components/Page';
+import Heading from '../components/Heading';
+import Paragraph from '../components/Paragraph';
+import Button from '../components/Button';
+import TextInput from '../components/TextInput';
+import TextLink from '../components/TextLink';
 
-import Toast from "react-native-root-toast";
-import { useTheme, Divider } from "@ui-kitten/components";
-
-import authApi from "../api/auth";
-import useApi from "../hooks/useApi";
-import authStorage from "../utilities/authStorage";
+import authStorage from '../utilities/authStorage';
 
 const validationSchema = Yup.object({
-  first_name: Yup.string().required().label("First name"),
-  last_name: Yup.string().label("Last Name"),
-  email: Yup.string().required().email().label("Email"),
-  password: Yup.string().required().min(6).label("Password"),
+  firstName: Yup.string().required().label('First name'),
+  lastName: Yup.string().label('Last Name'),
+  email: Yup.string().required().email().label('Email'),
+  password: Yup.string().required().min(6).label('Password'),
   passwordConfirmation: Yup.string()
-    .required("Password needs to be confirmed")
-    .oneOf([Yup.ref("password"), null], "Passwords must match"),
+    .required('Password needs to be confirmed')
+    .oneOf([Yup.ref('password'), null], 'Passwords must match'),
 });
 
 export default function RegisterScreen({ navigation }) {
@@ -43,62 +37,65 @@ export default function RegisterScreen({ navigation }) {
   const authContext = useContext(AuthContext);
   const theme = useTheme();
 
-  const registerHandler = ({ first_name, last_name, email, password }) => {
+  const registerHandler = ({
+    firstName, lastName, email, password,
+  }) => {
     setLoading(true);
 
     Firebase.auth()
       .createUserWithEmailAndPassword(email, password)
-      .then((res) => {
-        Firebase.auth().onAuthStateChanged(async function (user) {
+      .then(() => {
+        Firebase.auth().onAuthStateChanged(async (user) => {
           if (user) {
-            var token = await user.getIdToken();
+            const token = await user.getIdToken();
 
             // Updates the user attributes:
             Firebase.firestore()
-              .collection("users")
+              .collection('users')
               .doc(user.uid)
               .set({
-                email: email,
-                firstName: first_name.trim(),
-                lastName: last_name.trim(),
+                email,
+                firstName: firstName.trim(),
+                lastName: lastName.trim(),
               })
               .then(
-                function () {
+                () => {
                   // Profile updated successfully!
-                  Toast.show("Registration Successful", {
+                  Toast.show('Registration Successful', {
                     duration: Toast.durations.SHORT,
-                    backgroundColor: theme["notification-success"],
+                    backgroundColor: theme['notification-success'],
                   });
 
                   user
                     .sendEmailVerification()
-                    .then(function () {
+                    .then(() => {
                       // Email sent.
                     })
-                    .catch(function (error) {
+                    .catch((error) => {
                       // An error happened.
+                      console.log(error);
                     });
 
                   setLoading(false);
 
                   setTimeout(() => {
-                    AsyncStorage.setItem("hasOnboarded", "true");
+                    AsyncStorage.setItem('hasOnboarded', 'true');
                     authContext.setUser(user);
                     authStorage.storeToken(token);
 
                     navigation.reset({
                       index: 0,
-                      routes: [{ name: "Home" }],
+                      routes: [{ name: 'Home' }],
                     });
                   }, 300);
                 },
-                function (error) {
+                (error) => {
                   // An error happened.
                   Toast.show(error, {
                     duration: Toast.durations.SHORT,
-                    backgroundColor: theme["notification-error"],
+                    backgroundColor: theme['notification-error'],
                   });
-                }
+                },
               );
           }
         });
@@ -106,20 +103,20 @@ export default function RegisterScreen({ navigation }) {
       .catch((error) => {
         Toast.show(error, {
           duration: Toast.durations.SHORT,
-          backgroundColor: theme["notification-error"],
+          backgroundColor: theme['notification-error'],
         });
       });
   };
 
-  const googleRegister = () => {
-    
-  }
+  // const googleRegister = () => {
+
+  // };
 
   return (
     <>
       <Page>
         <KeyboardAwareScrollView contentContainerStyle={{ flex: 1 }}>
-          <View style={{ flexDirection: "row" }}>
+          <View style={{ flexDirection: 'row' }}>
             <Heading
               style={{
                 marginBottom: 30,
@@ -133,11 +130,11 @@ export default function RegisterScreen({ navigation }) {
 
           <Formik
             initialValues={{
-              first_name: "",
-              last_name: "",
-              email: "",
-              password: "",
-              passwordConfirmation: "",
+              firstName: '',
+              lastName: '',
+              email: '',
+              password: '',
+              passwordConfirmation: '',
             }}
             onSubmit={registerHandler}
             validationSchema={validationSchema}
@@ -154,8 +151,8 @@ export default function RegisterScreen({ navigation }) {
                 <ScrollView>
                   <View
                     style={{
-                      flexDirection: "row",
-                      justifyContent: "space-between",
+                      flexDirection: 'row',
+                      justifyContent: 'space-between',
                     }}
                   >
                     <View style={{ flex: 1, marginRight: 10 }}>
@@ -166,11 +163,11 @@ export default function RegisterScreen({ navigation }) {
                         returnKeyType="next"
                         textContentType="givenName"
                         autoCapitalize="none"
-                        value={values.first_name}
-                        onChangeText={handleChange("first_name")}
-                        errorMessage={errors.first_name}
-                        onBlur={() => setFieldTouched("first_name")}
-                        errorVisible={touched.first_name}
+                        value={values.firstName}
+                        onChangeText={handleChange('firstName')}
+                        errorMessage={errors.firstName}
+                        onBlur={() => setFieldTouched('firstName')}
+                        errorVisible={touched.firstName}
                       />
                     </View>
                     <View style={{ flex: 1 }}>
@@ -181,11 +178,11 @@ export default function RegisterScreen({ navigation }) {
                         returnKeyType="next"
                         textContentType="familyName"
                         autoCapitalize="none"
-                        value={values.last_name}
-                        onChangeText={handleChange("last_name")}
-                        errorMessage={errors.last_name}
-                        onBlur={() => setFieldTouched("last_name")}
-                        errorVisible={touched.last_name}
+                        value={values.lastName}
+                        onChangeText={handleChange('lastName')}
+                        errorMessage={errors.lastName}
+                        onBlur={() => setFieldTouched('lastName')}
+                        errorVisible={touched.lastName}
                       />
                     </View>
                   </View>
@@ -197,9 +194,9 @@ export default function RegisterScreen({ navigation }) {
                     textContentType="emailAddress"
                     autoCapitalize="none"
                     value={values.email}
-                    onChangeText={handleChange("email")}
+                    onChangeText={handleChange('email')}
                     errorMessage={errors.email}
-                    onBlur={() => setFieldTouched("email")}
+                    onBlur={() => setFieldTouched('email')}
                     errorVisible={touched.email}
                   />
                   <TextInput
@@ -209,11 +206,11 @@ export default function RegisterScreen({ navigation }) {
                     returnKeyType="next"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    secureTextEntry={true}
+                    secureTextEntry
                     value={values.password}
-                    onChangeText={handleChange("password")}
+                    onChangeText={handleChange('password')}
                     errorMessage={errors.password}
-                    onBlur={() => setFieldTouched("password")}
+                    onBlur={() => setFieldTouched('password')}
                     errorVisible={touched.password}
                   />
                   <TextInput
@@ -223,11 +220,11 @@ export default function RegisterScreen({ navigation }) {
                     returnKeyType="done"
                     autoCapitalize="none"
                     autoCorrect={false}
-                    secureTextEntry={true}
+                    secureTextEntry
                     value={values.passwordConfirmation}
-                    onChangeText={handleChange("passwordConfirmation")}
+                    onChangeText={handleChange('passwordConfirmation')}
                     errorMessage={errors.passwordConfirmation}
-                    onBlur={() => setFieldTouched("passwordConfirmation")}
+                    onBlur={() => setFieldTouched('passwordConfirmation')}
                     errorVisible={touched.passwordConfirmation}
                   />
                 </ScrollView>
@@ -277,10 +274,10 @@ export default function RegisterScreen({ navigation }) {
           </View> */}
 
           <View
-            style={{ marginTop: 20, marginBottom: 10, flexDirection: "row" }}
+            style={{ marginTop: 20, marginBottom: 10, flexDirection: 'row' }}
           >
             <Paragraph style={{ marginRight: 10 }}>Have an account?</Paragraph>
-            <TextLink onPress={() => navigation.navigate("Login")}>
+            <TextLink onPress={() => navigation.navigate('Login')}>
               Login
             </TextLink>
           </View>
@@ -289,11 +286,3 @@ export default function RegisterScreen({ navigation }) {
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  image: {
-    width: 70,
-    height: 70,
-    marginTop: -15,
-  },
-});

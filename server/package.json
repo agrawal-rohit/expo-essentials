@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "test:watch": "jest --watch",
-    "test:unit": "jest --coverage --testPathPattern=test\\.js$",
-    "test:integration": "jest --coverage --testPathPattern=spec\\.js$",
+    "test": "jest --coverage",
     
     "start:dev": "NODE_ENV=development nodemon start.js",
     "start:staging": "NODE_ENV=staging node start.js",

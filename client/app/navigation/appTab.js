@@ -1,15 +1,14 @@
-import React from "react";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import BrowseNavigator from "./browse";
-import HomeNavigator from "./home";
-import ProfileNavigator from "./profile";
+import React from 'react';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import {
   BottomNavigation,
   BottomNavigationTab,
   Icon,
-} from "@ui-kitten/components";
-
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+} from '@ui-kitten/components';
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import BrowseNavigator from './browse';
+import HomeNavigator from './home';
+import ProfileNavigator from './profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -22,7 +21,7 @@ const ProfileIcon = (props) => <Icon {...props} name="person-outline" />;
 const BottomTabBar = ({ navigation, state }) => (
   <BottomNavigation
     selectedIndex={state.index}
-    style={{paddingTop: 10}}
+    style={{ paddingTop: 10 }}
     onSelect={(index) => navigation.navigate(state.routeNames[index])}
   >
     <BottomNavigationTab title="Browse" icon={BrowseIcon} />
@@ -33,49 +32,49 @@ const BottomTabBar = ({ navigation, state }) => (
 
 export default function AppTabNavigator() {
   return (
-      <Tab.Navigator
-        tabBar={(props) => <BottomTabBar {...props} />}
-        initialRouteName="Home"
-      >
-        <Tab.Screen
-          name="Browse"
-          component={BrowseNavigator}
-          options={{
-            tabBarIcon: ({ size, color }) => (
-              <MaterialCommunityIcons
-                name="compass"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Home"
-          component={HomeNavigator}
-          options={{
-            tabBarIcon: ({ size, color }) => (
-              <MaterialCommunityIcons
-                name="library-shelves"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-        <Tab.Screen
-          name="Profile"
-          component={ProfileNavigator}
-          options={{
-            tabBarIcon: ({ size, color }) => (
-              <MaterialCommunityIcons
-                name="account-circle"
-                size={size}
-                color={color}
-              />
-            ),
-          }}
-        />
-      </Tab.Navigator>
+    <Tab.Navigator
+      tabBar={(props) => <BottomTabBar {...props} />}
+      initialRouteName="Home"
+    >
+      <Tab.Screen
+        name="Browse"
+        component={BrowseNavigator}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons
+              name="compass"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Home"
+        component={HomeNavigator}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons
+              name="library-shelves"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Profile"
+        component={ProfileNavigator}
+        options={{
+          tabBarIcon: ({ size, color }) => (
+            <MaterialCommunityIcons
+              name="account-circle"
+              size={size}
+              color={color}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
   );
 }

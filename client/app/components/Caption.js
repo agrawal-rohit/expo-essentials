@@ -1,6 +1,5 @@
-import React from "react";
-import { StyleSheet } from "react-native";
-import { Text } from "@ui-kitten/components";
+import React from 'react';
+import { Text } from '@ui-kitten/components';
 
 export default function Heading({
   children,
@@ -12,8 +11,8 @@ export default function Heading({
     <Text
       category="c1"
       style={{
-        fontSize: fontSize,
-        fontFamily: "Jost-Regular",
+        fontSize,
+        fontFamily: 'Jost-Regular',
         ...style,
       }}
       {...props}

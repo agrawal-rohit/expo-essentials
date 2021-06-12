@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Heading /> works correctly in dark theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="h1"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontFamily": "System",
+          "fontSize": 36,
+          "fontWeight": "800",
+        },
+        Object {
+          "fontFamily": "Jost-Bold",
+          "fontSize": 28,
+        },
+      ]
+    }
+  >
+    Test Heading
+  </Text>
+</View>
+`;
+
+exports[`<Heading /> works correctly in light theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="h1"
+    style={
+      Array [
+        Object {
+          "color": "#222B45",
+          "fontFamily": "System",
+          "fontSize": 36,
+          "fontWeight": "800",
+        },
+        Object {
+          "fontFamily": "Jost-Bold",
+          "fontSize": 28,
+        },
+      ]
+    }
+  >
+    Test Heading
+  </Text>
+</View>
+`;
