@@ -9,7 +9,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run app tests
-        run: cd client && npm run testFinal
+        run: cd client && npm install && npm run testFinal
 
       - name: Upload app coverage report
         uses: codecov/codecov-action@v1
