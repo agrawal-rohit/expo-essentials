@@ -3,7 +3,7 @@
 <p float="left">
 <img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/agrawal-rohit/expo-essentials/Build">
 <img alt="Codecov" src="https://img.shields.io/codecov/c/github/agrawal-rohit/expo-essentials">
-<a href="https://www.codefactor.io/repository/github/agrawal-rohit/expo-essentials"><img src="https://www.codefactor.io/repository/github/agrawal-rohit/expo-essentials/badge" alt="CodeFactor" /></a>
+<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/agrawal-rohit/expo-essentials">
 <img alt="GitHub contributors" src="https://img.shields.io/github/contributors/agrawal-rohit/expo-essentials">
 <img alt="GitHub issues" src="https://img.shields.io/github/issues/agrawal-rohit/expo-essentials">
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials">
