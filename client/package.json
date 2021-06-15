@@ -61,6 +61,7 @@
     "react-native-onboarding-swiper": "^1.1.4",
     "react-native-root-siblings": "^4.1.1",
     "react-native-root-toast": "^3.2.1",
+    "react-native-svg": "^9.13.6",
     "react-native-web": "~0.13.12",
     "yup": "^0.32.9"
   },
