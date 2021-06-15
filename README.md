@@ -19,7 +19,7 @@
 <img src="./img/home.png" alt="welcome" width="203"/>
 </p>
 
-An opiniated yet kickass template built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure, test suites, and essential features to get you up and running on your next app.
+A kickass template built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure, test suites, and essential features to get you up and running on your next app.
 
 # Table of Contents
 
