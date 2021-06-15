@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import Page from '../../components/Page';
-import Heading from '../../components/Heading';
+import Page from "../../components/Page";
+import Heading from "../../components/Heading";
 
 function ShelfHome() {
   return (

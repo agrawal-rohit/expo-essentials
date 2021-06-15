@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Caption /> works correctly in dark theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="c1"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontFamily": "System",
+          "fontSize": 12,
+          "fontWeight": "400",
+        },
+        Object {
+          "fontFamily": "Jost-Regular",
+          "fontSize": 15,
+        },
+      ]
+    }
+  >
+    Test Caption
+  </Text>
+</View>
+`;
+
+exports[`<Caption /> works correctly in light theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="c1"
+    style={
+      Array [
+        Object {
+          "color": "#222B45",
+          "fontFamily": "System",
+          "fontSize": 12,
+          "fontWeight": "400",
+        },
+        Object {
+          "fontFamily": "Jost-Regular",
+          "fontSize": 15,
+        },
+      ]
+    }
+  >
+    Test Caption
+  </Text>
+</View>
+`;

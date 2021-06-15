@@ -1,14 +1,14 @@
-import React from 'react';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import React from "react";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import {
   BottomNavigation,
   BottomNavigationTab,
   Icon,
-} from '@ui-kitten/components';
-import { MaterialCommunityIcons } from '@expo/vector-icons';
-import BrowseNavigator from './browse';
-import HomeNavigator from './home';
-import ProfileNavigator from './profile';
+} from "@ui-kitten/components";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import BrowseNavigator from "./browse";
+import HomeNavigator from "./home";
+import ProfileNavigator from "./profile";
 
 const Tab = createBottomTabNavigator();
 
@@ -41,11 +41,7 @@ export default function AppTabNavigator() {
         component={BrowseNavigator}
         options={{
           tabBarIcon: ({ size, color }) => (
-            <MaterialCommunityIcons
-              name="compass"
-              size={size}
-              color={color}
-            />
+            <MaterialCommunityIcons name="compass" size={size} color={color} />
           ),
         }}
       />

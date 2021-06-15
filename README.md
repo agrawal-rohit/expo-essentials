@@ -1,12 +1,13 @@
 <img src="./img/logo.png" alt="welcome" width="500"/>
 
 <p float="left">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/agrawal-rohit/expo-essentials/Build">
-<img alt="Codecov" src="https://img.shields.io/codecov/c/github/agrawal-rohit/expo-essentials">
-<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/agrawal-rohit/expo-essentials">
-<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/agrawal-rohit/expo-essentials">
-<img alt="GitHub issues" src="https://img.shields.io/github/issues/agrawal-rohit/expo-essentials">
-<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/agrawal-rohit/expo-essentials/Build?style=flat-square">
+<img alt="Codecov" src="https://img.shields.io/codecov/c/github/agrawal-rohit/expo-essentials?style=flat-square">
+<img alt="GitHub" src="https://img.shields.io/github/license/agrawal-rohit/expo-essentials?style=flat-square">
+<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/agrawal-rohit/expo-essentials?style=flat-square">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/agrawal-rohit/expo-essentials?style=flat-square">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/agrawal-rohit/expo-essentials?style=flat-square">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials?style=flat-square">
 </p>
 
 # Overview
@@ -21,20 +22,23 @@
 An opiniated yet kickass template built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure, test suites, and essential features to get you up and running on your next app.
 
 # Table of Contents
+
 1. [Key features](#key-features)
 2. [Usage](#usage)
-    1. [Installation](#installation)
-    2. [Setting a theme](#setting-a-theme)
+   1. [Installation](#installation)
+   2. [Setting a theme](#setting-a-theme)
 3. [Screens](#screens)
-    1. [Welcome](#welcome-screen)
-    2. [Onboarding](#onboarding-screen)
-    3. [Authentication](#authentication-screen)
-    4. [Home](#home-screen)
+   1. [Welcome](#welcome-screen)
+   2. [Onboarding](#onboarding-screen)
+   3. [Authentication](#authentication-screen)
+   4. [Home](#home-screen)
 4. [How to Contribute](#how-to-contribute)
 
 # Key features
+
 - 📱 All Expo features (Hot reloading, Cross-platform, Splash screen, etc)
 - 🎨 Easy theme configuration (Color palette and fonts)
+- 💐 ESLint and Prettier formatting to promote cleaner code
 - 🌗 Light and Dark mode
 - 🔥 Firebase integration
 - 🙏🏻 Welcome screen on first launch
@@ -46,10 +50,10 @@ An opiniated yet kickass template built on top of [Expo](https://docs.expo.io/),
 - 📡 Offline support through caching network requests and images
 - 🌎 Environment configuration based on app stage (develop, staging, and production)
 - 📋 Easy forms with input validation based on [Formik](https://formik.org/) and [Yup](https://github.com/jquense/yup)
-- ⚙️ (Optional) ExpressJS server and MongoDB database configured with a firebase auth middleware, environment setup, unit tests, and integration tests 
+- ⚙️ (Optional) ExpressJS server and MongoDB database configured with a firebase auth middleware, environment setup, unit tests, and integration tests
 - 📦 Flexibly written general components (Button, TextInput, Cards, Modal, Spinner, etc.)
 
-*(...and many more coming soon!)*
+_(...and many more coming soon!)_
 
 # Usage
 
@@ -57,14 +61,14 @@ An opiniated yet kickass template built on top of [Expo](https://docs.expo.io/),
 
 1. Clone/Fork this repo (based on your preference)
 2. Start the mobile app
-    ```
-    $ cd client
-    $ npm start
-    ```
+   ```
+   $ cd client
+   $ npm start
+   ```
 3. (Optional) Start the ExpressJS server and MongoDB instance (You need to have [Docker](https://docs.docker.com/get-started/) installed)
-    ```
-    $ docker-compose up --build
-    ```
+   ```
+   $ docker-compose up --build
+   ```
 
 ## Setting a theme
 
@@ -122,6 +126,7 @@ An opiniated yet kickass template built on top of [Expo](https://docs.expo.io/),
 </p>
 
 # How to Contribute
+
 1. Fork the repository
 2. Add a bug fix or new feature addition and create a pull request to this repo
 3. Write a detailed list of changes proposed in the pull request description

@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SafeScreen /> works correctly in dark theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    appearance="default"
+    level="1"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#222B45",
+        },
+        Object {
+          "flex": 1,
+        },
+      ]
+    }
+  >
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
+      style={
+        Object {
+          "flex": 1,
+          "padding": 20,
+          "paddingTop": 0,
+        }
+      }
+    >
+      Test Paragraph
+    </RCTSafeAreaView>
+  </View>
+</View>
+`;
+
+exports[`<SafeScreen /> works correctly in light theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    appearance="default"
+    level="1"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        Object {
+          "flex": 1,
+        },
+      ]
+    }
+  >
+    <RCTSafeAreaView
+      emulateUnlessSupported={true}
+      style={
+        Object {
+          "flex": 1,
+          "padding": 20,
+          "paddingTop": 0,
+        }
+      }
+    >
+      Test Paragraph
+    </RCTSafeAreaView>
+  </View>
+</View>
+`;

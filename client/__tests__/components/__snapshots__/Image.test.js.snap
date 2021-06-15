@@ -1,0 +1,52 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Image /> renders with round corners correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/main_puppies_1280p.jpg?itok=ZZ1podQK",
+      }
+    }
+    style={
+      Object {
+        "borderRadius": 10,
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+    testID="uri-image"
+  />
+</View>
+`;
+
+exports[`<Image /> renders with sharp corners correctly 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Image
+    source={
+      Object {
+        "uri": "https://www.sciencemag.org/sites/default/files/styles/article_main_large/public/main_puppies_1280p.jpg?itok=ZZ1podQK",
+      }
+    }
+    style={
+      Object {
+        "height": "100%",
+        "width": "100%",
+      }
+    }
+    testID="uri-image"
+  />
+</View>
+`;

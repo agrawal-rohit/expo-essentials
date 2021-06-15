@@ -4,8 +4,7 @@
   "description": "",
   "scripts": {
     "test:watch": "jest --watch",
-    "test": "jest --coverage",
-    
+    "test": "jest --coverage --passWithNoTests",
     "start:dev": "NODE_ENV=development nodemon start.js",
     "start:staging": "NODE_ENV=staging node start.js",
     "start:prod": "NODE_ENV=production node start.js"

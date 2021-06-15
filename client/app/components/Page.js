@@ -1,5 +1,5 @@
-import React from 'react';
-import { Layout } from '@ui-kitten/components';
+import React from "react";
+import { Layout } from "@ui-kitten/components";
 
 export default function Page({ children, withPadding = true }) {
   return (

@@ -1,0 +1,63 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SubHeading /> works correctly in dark theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="s1"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontFamily": "System",
+          "fontSize": 15,
+          "fontWeight": "600",
+        },
+        Object {
+          "fontFamily": "Jost-SemiBold",
+          "fontSize": 17,
+        },
+      ]
+    }
+  >
+    Test SubHeading
+  </Text>
+</View>
+`;
+
+exports[`<SubHeading /> works correctly in light theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="s1"
+    style={
+      Array [
+        Object {
+          "color": "#222B45",
+          "fontFamily": "System",
+          "fontSize": 15,
+          "fontWeight": "600",
+        },
+        Object {
+          "fontFamily": "Jost-SemiBold",
+          "fontSize": 17,
+        },
+      ]
+    }
+  >
+    Test SubHeading
+  </Text>
+</View>
+`;

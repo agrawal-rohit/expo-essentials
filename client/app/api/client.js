@@ -1,8 +1,7 @@
-import { create } from 'apisauce';
-// eslint-disable-next-line import/no-cycle
-import authStorage from '../utilities/authStorage';
-import cache from '../utilities/cache';
-import settings from '../config/settings';
+import { create } from "apisauce";
+import authStorage from "../utilities/authStorage";
+import cache from "../utilities/cache";
+import settings from "../config/settings";
 
 const apiClient = create({
   baseURL: settings.apiUrl,
@@ -27,7 +26,7 @@ apiClient.get = async (url, params, axiosConfig) => {
 apiClient.addAsyncRequestTransform(async (request) => {
   const token = await authStorage.getToken();
   if (!token) return;
-  request.headers.Authorization = 'Bearer '.concat(token);
+  request.headers.Authorization = "Bearer ".concat(token);
 });
 
 export default apiClient;

@@ -8,5 +8,6 @@ client/.expo-shared
 server/*.log
 server/coverage
 server/.env
+server/config/firebase-service-account-dev.json
 
 .DS_store

@@ -1,11 +1,11 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import OnboardingScreen from '../screens/onboarding/swiper';
-import GetStartedScreen from '../screens/onboarding/getstarted';
-import RegisterScreen from '../screens/register';
+import OnboardingScreen from "../screens/onboarding/swiper";
+import GetStartedScreen from "../screens/onboarding/getstarted";
+import RegisterScreen from "../screens/register";
 
-import AuthNavigator from './auth';
+import AuthNavigator from "./auth";
 
 const Stack = createStackNavigator();
 

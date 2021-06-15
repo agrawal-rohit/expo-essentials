@@ -1,18 +1,13 @@
-import React from 'react';
-import { Text } from '@ui-kitten/components';
+import React from "react";
+import { Text } from "@ui-kitten/components";
 
-export default function Heading({
-  children,
-  fontSize = 15,
-  style,
-  ...props
-}) {
+export default function Heading({ children, fontSize = 15, style, ...props }) {
   return (
     <Text
       category="c1"
       style={{
         fontSize,
-        fontFamily: 'Jost-Regular',
+        fontFamily: "Jost-Regular",
         ...style,
       }}
       {...props}

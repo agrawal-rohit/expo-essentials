@@ -1,7 +1,7 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import BrowseHome from '../screens/browse/home';
+import BrowseHome from "../screens/browse/home";
 
 const Stack = createStackNavigator();
 

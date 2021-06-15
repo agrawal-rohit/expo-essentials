@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text } from '@ui-kitten/components';
+import React from "react";
+import { Text } from "@ui-kitten/components";
 
 export default function Heading({
   children,
@@ -12,7 +12,7 @@ export default function Heading({
       category="h1"
       style={{
         fontSize,
-        fontFamily: 'Jost-Bold',
+        fontFamily: "Jost-Bold",
         ...style,
       }}
       {...props}

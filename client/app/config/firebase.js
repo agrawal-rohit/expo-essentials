@@ -1,8 +1,8 @@
 // TODO: Add your Firebase config here
-import firebase from 'firebase/app';
-import 'firebase/auth';
-import 'firebase/firestore';
-import settings from './settings';
+import firebase from "firebase/app";
+import "firebase/auth";
+import "firebase/firestore";
+import settings from "./settings";
 
 const firebaseConfig = {
   apiKey: settings.apiKey,

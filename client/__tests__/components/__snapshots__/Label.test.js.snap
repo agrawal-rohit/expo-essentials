@@ -1,0 +1,65 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Label /> works correctly in dark theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="label"
+    style={
+      Array [
+        Object {
+          "color": "#FFFFFF",
+          "fontFamily": "System",
+          "fontSize": 12,
+          "fontWeight": "800",
+        },
+        Object {
+          "fontFamily": "Jost-Bold",
+          "fontSize": 12,
+          "fontWeight": "800",
+        },
+      ]
+    }
+  >
+    Test Label
+  </Text>
+</View>
+`;
+
+exports[`<Label /> works correctly in light theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <Text
+    appearance="default"
+    category="label"
+    style={
+      Array [
+        Object {
+          "color": "#222B45",
+          "fontFamily": "System",
+          "fontSize": 12,
+          "fontWeight": "800",
+        },
+        Object {
+          "fontFamily": "Jost-Bold",
+          "fontSize": 12,
+          "fontWeight": "800",
+        },
+      ]
+    }
+  >
+    Test Label
+  </Text>
+</View>
+`;

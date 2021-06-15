@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Page /> works correctly in dark theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    appearance="default"
+    level="1"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#222B45",
+        },
+        Object {
+          "flex": 1,
+          "padding": 20,
+        },
+      ]
+    }
+  >
+    Test Paragraph
+  </View>
+</View>
+`;
+
+exports[`<Page /> works correctly in light theme 1`] = `
+<View
+  style={
+    Object {
+      "flex": 1,
+    }
+  }
+>
+  <View
+    appearance="default"
+    level="1"
+    style={
+      Array [
+        Object {
+          "backgroundColor": "#FFFFFF",
+        },
+        Object {
+          "flex": 1,
+          "padding": 20,
+        },
+      ]
+    }
+  >
+    Test Paragraph
+  </View>
+</View>
+`;

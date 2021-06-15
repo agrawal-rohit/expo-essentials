@@ -1,20 +1,20 @@
-import React from 'react';
-import { View, StyleSheet } from 'react-native';
-import { Spinner } from '@ui-kitten/components';
+import React from "react";
+import { View, StyleSheet } from "react-native";
+import { Spinner } from "@ui-kitten/components";
 
 const styles = StyleSheet.create({
   overlay: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: 'white',
-    position: 'absolute',
+    width: "100%",
+    height: "100%",
+    backgroundColor: "white",
+    position: "absolute",
     opacity: 0.8,
     zIndex: 1,
   },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
 

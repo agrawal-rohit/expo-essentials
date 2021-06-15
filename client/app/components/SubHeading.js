@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text } from '@ui-kitten/components';
+import React from "react";
+import { Text } from "@ui-kitten/components";
 
 export default function SubHeading({
   children,
@@ -12,7 +12,7 @@ export default function SubHeading({
       category="s1"
       style={{
         fontSize,
-        fontFamily: 'Jost-SemiBold',
+        fontFamily: "Jost-SemiBold",
         ...style,
       }}
       {...props}

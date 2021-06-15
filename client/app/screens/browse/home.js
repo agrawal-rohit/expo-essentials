@@ -1,6 +1,6 @@
-import React from 'react';
-import Page from '../../components/Page';
-import Heading from '../../components/Heading';
+import React from "react";
+import Page from "../../components/Page";
+import Heading from "../../components/Heading";
 
 function DiscoverHome() {
   return (

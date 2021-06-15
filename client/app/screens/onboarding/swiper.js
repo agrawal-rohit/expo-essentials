@@ -1,21 +1,17 @@
-import React from 'react';
-import {
-  View,
-  StyleSheet,
-  Dimensions,
-} from 'react-native';
+import React from "react";
+import { View, StyleSheet, Dimensions } from "react-native";
 
-import Onboarding from 'react-native-onboarding-swiper';
-import { useTheme } from '@ui-kitten/components';
-import Page from '../../components/Page';
-import TextLink from '../../components/TextLink';
-import Image from '../../components/Image';
+import Onboarding from "react-native-onboarding-swiper";
+import { useTheme } from "@ui-kitten/components";
+import Page from "../../components/Page";
+import TextLink from "../../components/TextLink";
+import Image from "../../components/Image";
 
-const { width, height, scale } = Dimensions.get('screen');
+const { width, height, scale } = Dimensions.get("screen");
 
 const styles = StyleSheet.create({
   containerStyles: {
-    justifyContent: 'flex-start',
+    justifyContent: "flex-start",
     top: 0.05 * height * scale,
   },
   imageContainer: {
@@ -23,13 +19,13 @@ const styles = StyleSheet.create({
   },
   titleStyles: {
     fontSize: 24,
-    fontWeight: '800',
-    fontFamily: 'Jost-Bold',
+    fontWeight: "800",
+    fontFamily: "Jost-Bold",
   },
   subTitleStyles: {
     fontSize: 17,
-    fontWeight: '700',
-    fontFamily: 'Jost-Regular',
+    fontWeight: "700",
+    fontFamily: "Jost-Regular",
     marginTop: -10,
   },
   image: {
@@ -39,15 +35,21 @@ const styles = StyleSheet.create({
 });
 
 const Next = ({ ...props }) => (
-  <TextLink style={{ marginHorizontal: 20 }} {...props}>Next</TextLink>
+  <TextLink style={{ marginHorizontal: 20 }} {...props}>
+    Next
+  </TextLink>
 );
 
 const Done = ({ ...props }) => (
-  <TextLink style={{ marginHorizontal: 20 }} {...props}>Finish</TextLink>
+  <TextLink style={{ marginHorizontal: 20 }} {...props}>
+    Finish
+  </TextLink>
 );
 
 const Skip = ({ ...props }) => (
-  <TextLink style={{ marginHorizontal: 20 }} {...props}>Skip</TextLink>
+  <TextLink style={{ marginHorizontal: 20 }} {...props}>
+    Skip
+  </TextLink>
 );
 
 const Dots = ({ selected }) => {
@@ -58,10 +60,12 @@ const Dots = ({ selected }) => {
         width: 7,
         height: 7,
         marginHorizontal: 2,
-        backgroundColor: selected ? theme['color-primary-default'] : theme['background-basic-color-1'],
+        backgroundColor: selected
+          ? theme["color-primary-default"]
+          : theme["background-basic-color-1"],
         borderRadius: 10,
         borderWidth: 1,
-        borderColor: theme['color-primary-default'],
+        borderColor: theme["color-primary-default"],
       }}
     />
   );
@@ -73,8 +77,8 @@ export default function OnboardingScreen({ navigation }) {
   return (
     <Page withPadding={false}>
       <Onboarding
-        onSkip={() => navigation.replace('Login')}
-        onDone={() => navigation.navigate('Login')}
+        onSkip={() => navigation.replace("Login")}
+        onDone={() => navigation.navigate("Login")}
         DoneButtonComponent={Done}
         NextButtonComponent={Next}
         SkipButtonComponent={Skip}
@@ -86,40 +90,40 @@ export default function OnboardingScreen({ navigation }) {
         imageContainerStyles={styles.imageContainer}
         pages={[
           {
-            backgroundColor: theme['background-basic-color-1'],
+            backgroundColor: theme["background-basic-color-1"],
             image: (
               <Image
-                source={require('../../assets/images/onboarding1.png')}
+                src={require("../../assets/images/onboarding1.png")}
                 cache={false}
                 style={styles.image}
               />
             ),
-            title: 'Feature title 1',
-            subtitle: 'Feature caption 1',
+            title: "Feature title 1",
+            subtitle: "Feature caption 1",
           },
           {
-            backgroundColor: theme['background-basic-color-1'],
+            backgroundColor: theme["background-basic-color-1"],
             image: (
               <Image
-                source={require('../../assets/images/onboarding2.png')}
+                src={require("../../assets/images/onboarding2.png")}
                 cache={false}
                 style={styles.image}
               />
             ),
-            title: 'Feature title 2',
-            subtitle: 'Feature caption 2',
+            title: "Feature title 2",
+            subtitle: "Feature caption 2",
           },
           {
-            backgroundColor: theme['background-basic-color-1'],
+            backgroundColor: theme["background-basic-color-1"],
             image: (
               <Image
-                source={require('../../assets/images/onboarding3.png')}
+                src={require("../../assets/images/onboarding3.png")}
                 cache={false}
                 style={styles.image}
               />
             ),
-            title: 'Feature title 3',
-            subtitle: 'Feature caption 3',
+            title: "Feature title 3",
+            subtitle: "Feature caption 3",
           },
         ]}
       />

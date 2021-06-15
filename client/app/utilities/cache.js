@@ -1,7 +1,7 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import moment from 'moment';
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import moment from "moment";
 
-const prefix = 'cache';
+const prefix = "cache";
 const expiryInMinutes = 5;
 
 const store = async (key, value) => {
@@ -19,7 +19,7 @@ const store = async (key, value) => {
 const checkExpiry = (item) => {
   const now = moment(Date.now());
   const storedTime = moment(item.timestamp);
-  return now.diff(storedTime, 'minutes') > expiryInMinutes;
+  return now.diff(storedTime, "minutes") > expiryInMinutes;
 };
 
 // eslint-disable-next-line consistent-return

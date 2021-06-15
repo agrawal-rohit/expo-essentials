@@ -1,7 +1,7 @@
-import React from 'react';
-import { createStackNavigator } from '@react-navigation/stack';
+import React from "react";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import ProfileHome from '../screens/profile/home';
+import ProfileHome from "../screens/profile/home";
 
 const Stack = createStackNavigator();
 
@@ -13,7 +13,7 @@ export default function ProfileNavigator() {
     >
       <Stack.Screen
         name="ProfileHome"
-        options={{ title: 'Profile' }}
+        options={{ title: "Profile" }}
         component={ProfileHome}
       />
     </Stack.Navigator>

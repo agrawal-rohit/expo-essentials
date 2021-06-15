@@ -1,62 +1,58 @@
 /* eslint-disable no-nested-ternary */
-import React, { useState } from 'react';
-import { useFonts } from 'expo-font';
-import AppLoading from 'expo-app-loading';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { RootSiblingParent } from 'react-native-root-siblings';
-import { useColorScheme } from 'react-native';
+import React, { useState } from "react";
+import { useFonts } from "expo-font";
+import AppLoading from "expo-app-loading";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { RootSiblingParent } from "react-native-root-siblings";
+import { useColorScheme } from "react-native";
 
-import * as eva from '@eva-design/eva';
-import { EvaIconsPack } from '@ui-kitten/eva-icons';
-import {
-  ApplicationProvider,
-  IconRegistry,
-} from '@ui-kitten/components';
-import { NavigationContainer } from '@react-navigation/native';
-import lightTheme from './app/config/lightTheme';
-import darkTheme from './app/config/darkTheme';
-import { ThemeContext } from './app/contexts/theme-context';
+import * as eva from "@eva-design/eva";
+import { EvaIconsPack } from "@ui-kitten/eva-icons";
+import { ApplicationProvider, IconRegistry } from "@ui-kitten/components";
+import { NavigationContainer } from "@react-navigation/native";
+import lightTheme from "./app/config/lightTheme";
+import darkTheme from "./app/config/darkTheme";
+import { ThemeContext } from "./app/contexts/theme-context";
 
-import AuthContext from './app/contexts/auth';
-import authStorage from './app/utilities/authStorage';
+import AuthContext from "./app/contexts/auth";
+import authStorage from "./app/utilities/authStorage";
 
 // Navigation
-import OnboardingNavigator from './app/navigation/onboarding';
-import AuthNavigator from './app/navigation/auth';
-import AppTabNavigator from './app/navigation/appTab';
-import SafeScreen from './app/components/SafeScreen';
-import OfflineNotice from './app/components/OfflineNotice';
+import OnboardingNavigator from "./app/navigation/onboarding";
+import AuthNavigator from "./app/navigation/auth";
+import AppTabNavigator from "./app/navigation/appTab";
+import SafeScreen from "./app/components/SafeScreen";
+import OfflineNotice from "./app/components/OfflineNotice";
 
 export default function App() {
-  // TODO: Update the fonts based on your design
   const [haveFontsLoaded] = useFonts({
-    'Jost-Regular': require('./app/assets/fonts/Jost-Regular.ttf'),
-    'Jost-SemiBold': require('./app/assets/fonts/Jost-SemiBold.ttf'),
-    'Jost-Bold': require('./app/assets/fonts/Jost-Bold.ttf'),
-    'Jost-ExtraBold': require('./app/assets/fonts/Jost-ExtraBold.ttf'),
-    'Jost-ExtraLight': require('./app/assets/fonts/Jost-ExtraLight.ttf'),
-    'Jost-Light': require('./app/assets/fonts/Jost-Light.ttf'),
-    'Jost-Medium': require('./app/assets/fonts/Jost-Medium.ttf'),
-    'Jost-Thin': require('./app/assets/fonts/Jost-Thin.ttf'),
+    "Jost-Regular": require("./app/assets/fonts/Jost-Regular.ttf"),
+    "Jost-SemiBold": require("./app/assets/fonts/Jost-SemiBold.ttf"),
+    "Jost-Bold": require("./app/assets/fonts/Jost-Bold.ttf"),
+    "Jost-ExtraBold": require("./app/assets/fonts/Jost-ExtraBold.ttf"),
+    "Jost-ExtraLight": require("./app/assets/fonts/Jost-ExtraLight.ttf"),
+    "Jost-Light": require("./app/assets/fonts/Jost-Light.ttf"),
+    "Jost-Medium": require("./app/assets/fonts/Jost-Medium.ttf"),
+    "Jost-Thin": require("./app/assets/fonts/Jost-Thin.ttf"),
   });
 
   const systemThemeStyle = useColorScheme();
 
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(null);
   const [theme, setTheme] = useState(systemThemeStyle);
   const [isReady, setIsReady] = useState(false);
-  const [initialRoute, setInitialRoute] = useState('Onboarding');
+  const [initialRoute, setInitialRoute] = useState("Onboarding");
 
   const restoreUser = async () => {
     const user = await authStorage.getUser();
-    if (user) setUser(user);
+    setUser(user);
   };
 
   const computeInitialRoute = async () => {
     try {
-      const value = await AsyncStorage.getItem('hasOnboarded');
-      if (value === 'true') {
-        setInitialRoute('Auth');
+      const value = await AsyncStorage.getItem("hasOnboarded");
+      if (value === "true") {
+        setInitialRoute("Auth");
       }
     } catch (e) {
       console.log(e);
@@ -77,7 +73,7 @@ export default function App() {
             <ApplicationProvider
               {...eva}
               theme={
-                theme === 'light'
+                theme === "light"
                   ? { ...eva.light, ...lightTheme }
                   : { ...eva.dark, ...darkTheme }
               }
@@ -88,7 +84,7 @@ export default function App() {
                   <NavigationContainer>
                     {user ? (
                       <AppTabNavigator />
-                    ) : initialRoute === 'Onboarding' ? (
+                    ) : initialRoute === "Onboarding" ? (
                       <OnboardingNavigator />
                     ) : (
                       <AuthNavigator />
