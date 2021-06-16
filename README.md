@@ -10,7 +10,7 @@
 <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials">
 </p>
 
-# Overview
+`expo-essentials` is a kickass template built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure, test suites, and essential features to get you up and running on your next app.
 
 <p float="left">
 <img src="./img/welcome.png" alt="welcome" width="200"/>
@@ -18,8 +18,6 @@
 <img src="./img/login.png" alt="welcome" width="203"/>
 <img src="./img/home.png" alt="welcome" width="203"/>
 </p>
-
-A kickass template built on top of [Expo](https://docs.expo.io/), containing a manageable folder structure, test suites, and essential features to get you up and running on your next app.
 
 # Table of Contents
 
