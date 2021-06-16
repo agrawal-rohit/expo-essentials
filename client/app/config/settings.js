@@ -13,12 +13,12 @@ import {
 const settings = {
   dev: {
     apiUrl: "http://127.0.0.1:8000",
-    apiKey: "AIzaSyA4zKo3Ttf8Y_9W3AHZwgv_GrtK1qbI4t0",
-    authDomain: "coinpace-dev.firebaseapp.com",
-    projectId: "coinpace-dev",
-    storageBucket: "coinpace-dev.appspot.com",
-    messagingSenderId: "886705582702",
-    appId: "1:886705582702:web:73b84f8e7f0c8ff1242c7f",
+    apiKey: "<Your API Key>",
+    authDomain: "<Your Auth Domain>",
+    projectId: "<Your Project ID>",
+    storageBucket: "<Your Storage Bucket>",
+    messagingSenderId: "<Your Messaging Sender ID>",
+    appId: "<Your App ID",
     measurementId: null,
   },
   staging: {},

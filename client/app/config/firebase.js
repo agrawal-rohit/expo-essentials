@@ -1,7 +1,8 @@
-// TODO: Add your Firebase config here
 import firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+// import "firebase/analytics";
+
 import settings from "./settings";
 
 const firebaseConfig = {
