@@ -1,13 +1,13 @@
 <img src="./img/logo.png" alt="welcome" width="500"/>
 
 <p float="left">
-<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/agrawal-rohit/expo-essentials/Build?style=flat-square">
-<img alt="Codecov" src="https://img.shields.io/codecov/c/github/agrawal-rohit/expo-essentials?style=flat-square">
-<img alt="GitHub" src="https://img.shields.io/github/license/agrawal-rohit/expo-essentials?style=flat-square">
-<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/agrawal-rohit/expo-essentials?style=flat-square">
-<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/agrawal-rohit/expo-essentials?style=flat-square">
-<img alt="GitHub issues" src="https://img.shields.io/github/issues/agrawal-rohit/expo-essentials?style=flat-square">
-<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials?style=flat-square">
+<img alt="GitHub Workflow Status" src="https://img.shields.io/github/workflow/status/agrawal-rohit/expo-essentials/Build">
+<img alt="Codecov" src="https://img.shields.io/codecov/c/github/agrawal-rohit/expo-essentials">
+<img alt="GitHub" src="https://img.shields.io/github/license/agrawal-rohit/expo-essentials">
+<img alt="CodeFactor Grade" src="https://img.shields.io/codefactor/grade/github/agrawal-rohit/expo-essentials">
+<img alt="GitHub contributors" src="https://img.shields.io/github/contributors/agrawal-rohit/expo-essentials">
+<img alt="GitHub issues" src="https://img.shields.io/github/issues/agrawal-rohit/expo-essentials">
+<img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/agrawal-rohit/expo-essentials">
 </p>
 
 # Overview
